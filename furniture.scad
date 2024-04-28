@@ -11,27 +11,42 @@ module Chair(seatWidth, seatDepth, seatThickness, backHeight, legWidth, legHeigh
 }
 
 
-module Table(topWidth, topDepth, topThickness, legWidth, legHeight, legOffset){
-  //Table Top
-  translate([0, 0, legHeight])
-    cube([topWidth, topDepth, topThickness]);
+module Table(in){
+  position = in[0];           
+  angle = in[1];
+  topWidth = in[2];
+  topDepth = in[3];
+  topThickness = in[4];
+  legWidth = in[5];
+  legHeight = in[6];
+  legOffset = in[7];
+ 
+  translate(position)
+    rotate([0,0,angle]){
+      //Table Top
+      translate([0, 0, legHeight])
+        cube([topWidth, topDepth, topThickness]);
 
-  //Legs
-  translate([legOffset, legOffset,0])
-    cube([legWidth, legWidth, legHeight]);
+      //Legs
+      translate([legOffset, legOffset,0])
+        cube([legWidth, legWidth, legHeight]);
 
-  translate([topWidth - legWidth - legOffset, legOffset, 0])
-    cube([legWidth, legWidth, legHeight]);
+      translate([topWidth - legWidth - legOffset, legOffset, 0])
+        cube([legWidth, legWidth, legHeight]);
 
-  translate([legOffset, topDepth - legWidth - legOffset, 0])
-    cube([legWidth, legWidth, legHeight]);
+      translate([legOffset, topDepth - legWidth - legOffset, 0])
+        cube([legWidth, legWidth, legHeight]);
 
-  translate([topWidth - legWidth -legOffset, topDepth - legWidth -legOffset, 0])
-    cube([legWidth, legWidth, legHeight]);    
+      translate([topWidth - legWidth -legOffset, topDepth - legWidth -legOffset, 0])
+        cube([legWidth, legWidth, legHeight]);    
+    }
 }
 
 
 module lamp(h,w,f){
+    
+
+
     //base
     translate([0,0,h/20])
       cylinder(h/20,w/1.5,w/7,$fn=numberOfFaces);

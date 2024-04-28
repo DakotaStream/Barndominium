@@ -4,10 +4,10 @@
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
 //([position],scale,angle,[length, width, height])
-kitchen([[653,-208,0],1,90]);
-
-barnAndWindows();
-allGables();
+//kitchen([[653,-205,0],90]);
+kitchen([[653,-205,0],90]);
+//barnAndWindows();
+//allGables();
 //:roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 
 module barnAndWindows(){
@@ -44,40 +44,59 @@ module allGables(){
 
 module kitchen(in){
   position = in[0];           
-  s = in[1];  //Scale
-  a = in[2];  //angle
+  a = in[1];  //angle
+
+  translate(position){
+    rotate([0,0,a]){
+//  lamp(70,20,50);
+       counterCup([[0,0,wallThickness],55,0,36]);
+       sink([[0,0,wallThickness],0,42]);
+       counterCup([[-30-42,0,wallThickness],55,0,30]);
+       counterCorner([[-84,0,wallThickness],270]);
+       counterCup([[-84,44+12,wallThickness],55,270,44]);
+       stove([[-84,56,wallThickness],270]);
+       cupboard([[-72,56,wallThickness + 60],90,30]);
+       counterCup([[-84,120,wallThickness],55,270,34]);
+       refrigerator([[-25,142,wallThickness],0,[36,35,70]]);
+       counterCup([[-84 + 150 -34 + 13,177,wallThickness],55,180,34]);
+       island([[1-19,75+35,wallThickness],270,[50,36,37]]);
+       Table([[17+55,47,0],0,42, 94, 5, 4, 36, 1]);
+    }
+  }
+}
+
+module kitchenOne(in){
+  position = in[0];           
+  a = in[1];  //angle
 
 
   translate(position){
     rotate([0,0,a]){
     
-//  lamp(70,20,50);
-       counterCup([[0,0,wallThickness],55,1,0,36]);
+//       counterCup([[0,0,wallThickness],55,1,0,36]);
 
-       translate([1,0,wallThickness])
-         sink([[0,0,0],1,0,44]);
-       counterCup([[-30-42,0,wallThickness],55,1,0,30]);
+       //translate([1,0,wallThickness])
+         sink([[0,0,0],1,270,44]);
+//       counterCup([[-30-42,0,wallThickness],55,1,0,30]);
 
-       translate([-84,0,0])
-      counterCorner([[0,0,wallThickness],1,270]);
-       counterCup([[-84,44+12,wallThickness],55,1,270,44]);
+       counterCup([[-85,0,wallThickness],55,0,14]);
        stove([[-84,56,wallThickness],1,270]);
 
-      cupboard([[-72,56,wallThickness + 60],1,90,30]);
+      cupboard([[-72,56,wallThickness + 60],90,30]);
 
-      counterCup([[-84,120,wallThickness],55,1,270,34]);
+      counterCup([[-84,120,wallThickness],55,270,34]);
 
       refrigerator([[-25,142,wallThickness],1,0,[36,35,70]]);
       
-      counterCup([[-84 + 150 -34 + 13,177,wallThickness],55,1,180,34]);
-      island([[1-19,75+35,wallThickness],1,270,[50,36,37]]);
-// kim's     island([[0,21,wallThickness],1,90,[60,48,37]]);
+      counterCup([[-84 + 150 -34 + 13,177,wallThickness],55,180,34]);
+//      island([[1-19,75+35,wallThickness],1,270,[50,36,37]]);
+//    island([[0,21,wallThickness],1,90,[60,48,37]]);
 
-     translate([17+55,47,0])
-        Table(42, 94, 5, 4, 36, 1);
+       Table([[17+55,47,0],0,42, 94, 5, 4, 36, 1]);
     }
   }
 }
+
 
 
 
