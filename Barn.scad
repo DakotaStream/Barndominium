@@ -1,7 +1,13 @@
 // This include file makes things more organized and smaller.
-allFurniture();
-//barnAndWindows();
-//allGables();
+//'allFurniture();
+
+include <furniture.scad>;
+include <kitchenFurnishings.scad>;
+//([position],scale,angle,[length, width, height])
+kitchen([[653,-208,0],1,90]);
+
+barnAndWindows();
+allGables();
 //:roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 
 module barnAndWindows(){
@@ -17,7 +23,9 @@ module allFurniture(){
 //  counter([[0,71,wallThickness],1,90,50]);
 //  counter([[-21,0,wallThickness],1,0,50]);
  // counter([[0,0,wallThickness],1,0,21]);
-  counterCorner([[0,21,wallThickness],1,90,]);
+ // counterCorner([[0,21,wallThickness],1,90,]);
+//([position],scale,angle,[length, width, height])
+ // island([[0,21,wallThickness],1,90,[60,48,37]]);
 //  counter([[0,0,wallThickness],1,90,50]);
   //counterCorner([[0,0,wallThickness],1,180]);
 //  stove([[800,0,wallThickness],1,180]);
@@ -33,70 +41,47 @@ module allGables(){
 
 
 
-module sink(in){
-  m = in[0];
-  x = m[0];
-  y = m[1];
-  z = m[2];
-  s = in[1];
-  r = in[2];
-  l = in[3];
 
-  difference()
-  {
-    counter(in);
-    {
-      rotate([0,0,r+180])
-      {
-        translate([x+19,y-20,z+28])
-          linear_extrude(9){ polygon([[0,2*s], [0, 14*s],   [2*s,16*s], [12.5*s,16*s],
-          [14.5*s,14*s], [14.5*s,2*s],  [12.5*s,0*s], [2*s,0*s], [0*s,2*s] ]); } 
-        translate([x+2.5,y-20,z+28])
-        linear_extrude(9){ polygon([[0,2*s], [0, 14*s],   [2*s,16*s], [12.5*s,16*s],
-          [14.5*s,14*s], [14.5*s,2*s],  [12.5*s,0*s], [2*s,0*s], [0*s,2*s] ]); } 
-      }
+module kitchen(in){
+  position = in[0];           
+  s = in[1];  //Scale
+  a = in[2];  //angle
+
+
+  translate(position){
+    rotate([0,0,a]){
+    
+//  lamp(70,20,50);
+       counterCup([[0,0,wallThickness],55,1,0,36]);
+
+       translate([1,0,wallThickness])
+         sink([[0,0,0],1,0,44]);
+       counterCup([[-30-42,0,wallThickness],55,1,0,30]);
+
+       translate([-84,0,0])
+      counterCorner([[0,0,wallThickness],1,270]);
+       counterCup([[-84,44+12,wallThickness],55,1,270,44]);
+       stove([[-84,56,wallThickness],1,270]);
+
+      cupboard([[-72,56,wallThickness + 60],1,90,30]);
+
+      counterCup([[-84,120,wallThickness],55,1,270,34]);
+
+      refrigerator([[-25,142,wallThickness],1,0,[36,35,70]]);
+      
+      counterCup([[-84 + 150 -34 + 13,177,wallThickness],55,1,180,34]);
+      island([[1-19,75+35,wallThickness],1,270,[50,36,37]]);
+// kim's     island([[0,21,wallThickness],1,90,[60,48,37]]);
+
+     translate([17+55,47,0])
+        Table(42, 94, 5, 4, 36, 1);
     }
   }
 }
- 
-
-module counterCorner(in){
-  r = in[2];
-  s = in[1];
-  
-  rotate([0,0,r]){
-    counter([[0,0,wallThickness],1,0,21]);
-    counter([[0,21,wallThickness],1,90,21]);
-  }
-
-}
 
 
 
-module counter(in){
-  s = in[1];
-  r = in[2];
-  l = in[3];
-translate(in[0])
-  rotate([0,270,r])
-      linear_extrude(l){ polygon([[0,0], [0, 21*s], [4.5*s,21*s], [4.5*s,24*s],
-      [35.5*s,24*s], [35.5*s,26*s],[36.75*s,26*s],
-      [36.75*s,1.5*s], [41*s,1.5*s], [41*s,0*s],
-      [0,0]
-      ]); } 
-}
 
-module stove(in){
-  s = in[1];
-  r = in[2];
-  translate(in[0])
-    rotate([0,270,r])
-        linear_extrude(30*s){ polygon([[0,0], [0, 26*s], [32*s,26*s],
-        [32*s,28*s], [34*s,28*s], [34*s,26*s], 
-        [37*s,26*s], [37*s,4*s], 
-        [48*s,2*s],[48*s,0],[0,0]
-        ]); } 
-}
 
 module roof(s){
   l = s[0];
