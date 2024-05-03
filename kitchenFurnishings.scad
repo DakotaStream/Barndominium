@@ -76,7 +76,7 @@ module SinkDouble(in){
             translate([length/2+1+gapBetween,-20,28])
               linear_extrude(9){ polygon([[0,2], [0, 14],   [2,16], [12.5,16],
               [14.5,14], [14.5,2],  [12.5,0], [2,0], [0,2] ]); } 
-            translate([length/2-15.65-gapBetween,-20,28])
+            translate([length/2-15.75-gapBetween,-20,28])
             linear_extrude(9){ polygon([[0,2], [0, 14],   [2,16], [12.5,16],
               [14.5,14], [14.5,2],  [12.5,0], [2,0], [0,2] ]); } 
           }
@@ -153,7 +153,7 @@ module Toilet(in){
           {
             translate([0,2.5,6])
               scale([4,6]) 
-                cylinder(12,0.6,1,$fn=40);
+                cylinder(13,0.6,1,$fn=40);
             translate([0,2.5,0])
               cylinder(18,2,2,$fn=40);  
           }

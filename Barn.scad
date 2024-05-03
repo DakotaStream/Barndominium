@@ -88,6 +88,18 @@ module wall(in){
 }
 
 
+module roomn(in){
+  position = in[0];           
+  angle = in[1];
+  insideDim = in[2];
+  wallThick = in[3];
+  door = in[4];
+  doorPosition = in[5];
+  outsideDim = [insideDim[0]+2*wallThick,insideDim[1]+2*wallThick,insideDim[2]];
+
+
+ }
+
 module room(in){
   position = in[0];           
   angle = in[1];
@@ -101,10 +113,10 @@ module room(in){
     rotate([0,0,angle])
       difference(){
         cube(outsideDim); {
-          translate([wallThick,wallThick,0])
-            cube(insideDim); 
-        translate([0,doorPosition + wallThick,0])
-          cube([wallThick,door[0],door[1]]); 
+          translate([wallThick,wallThick,-1])
+            cube([insideDim[0],insideDim[1],insideDim[2]+2]); 
+        translate([-1,doorPosition + wallThick,0])
+          cube([wallThick+2,door[0],door[1]]); 
           }
       }
 }
