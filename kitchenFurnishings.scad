@@ -160,3 +160,25 @@ module Toilet(in){
     }
   }
 }
+
+
+module Tub(in){
+  position = in[0];           
+  angle = in[1];
+  dim = in[2];
+  
+  translate([0,0,0])
+    rotate([0,270,0])
+          cylinder(3,2,3,$fn=10); 
+
+  translate(position)
+    rotate([0,0,angle]){
+      difference(){
+        cube(dim); 
+         translate([dim[0]/2,dim[1]/2,3])
+         scale([dim[0]-3,dim[1]-3])
+          cylinder(dim[2],0.5,0.5,$fn=30); 
+      }
+      }
+}
+

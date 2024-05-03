@@ -12,12 +12,12 @@ include <kitchenFurnishings.scad>;
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
-bathroom2();
+//bathroom2();
 //bathroom3();
 //closet3();
 //bedroom3();
 //Toilet([[0,0,0],0]);
-
+Tub([[0,0,0],0,[58,29.5,15]]);
 //SinkDouble([[0,0,wallThickness],180,33,0.5]);
 //Sink([[0,0,wallThickness],180,15]);
 
