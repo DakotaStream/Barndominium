@@ -3,7 +3,7 @@ numberOfFaces = 20;
 
 module Chair(seatWidth, seatDepth, seatThickness, backHeight, legWidth, legHeight, legOffset){
   //Seat portion is just a table, so just use Table to build it.
-  Table(seatWidth, seatDepth, seatThickness, legWidth, legHeight, legOffset);
+  Table([[0,0,0],0,seatWidth, seatDepth, seatThickness, legWidth, legHeight, legOffset]);
  
   //Chair Back
   translate([0, 0, legHeight + seatThickness])

@@ -1,15 +1,22 @@
+
 // This include file makes things more organized and smaller.
 //'allFurniture();
 
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
 //([position],scale,angle,[length, width, height])
-//kitchen([[653,-205,0],90]);
-kitchen([[653,-205,0],90]);
+//kitchenOne([[553,0,0],180]);
+//kitchen([[553,0,0],270]);
 //barnAndWindows();
 //allGables();
-//:roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
+//roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
+//bathroom1();
+Toilet([[0,0,0],0]);
 
+//Chair(30, 30, 5, 35, 3, 30, 1);
+
+
+//Chair(seatWidth, seatDepth, seatThickness, backHeight, legWidth, legHeight, legOffset)
 module barnAndWindows(){
   difference(){
     bin(barn);
@@ -40,6 +47,59 @@ module allGables(){
 }
 
 
+module bathroom1(){
+ //     pos     a  inside rm  wl  door  pos 
+  room([[0,0,0],0,[42,93,108],5,[30,81],26]);
+}
+
+module wallAndDoor(in){
+  position = in[0];           
+  angle = in[1];
+  wall = in[2];
+  door = in[3];
+  doorPosition = in[4];
+  translate(position)
+    rotate([0,0,angle])
+      difference(){
+        cube(wall); 
+        translate([0,doorPosition,0])
+          cube([wall[0],door[0],door[1]]); 
+        }
+}
+
+module wall(in){
+  position = in[0];           
+  angle = in[1];
+  wall = in[2];
+  translate(position)
+    rotate([0,0,angle])
+      cube(wall); 
+}
+
+
+module room(in){
+  position = in[0];           
+  angle = in[1];
+  insideDim = in[2];
+  wallThick = in[3];
+  door = in[4];
+  doorPosition = in[5];
+  outsideDim = [insideDim[0]+2*wallThick,insideDim[1]+2*wallThick,insideDim[2]];
+ 
+  translate(position)
+    rotate([0,0,angle])
+      difference(){
+        cube(outsideDim); {
+          translate([wallThick,wallThick,0])
+            cube(insideDim); 
+        translate([0,doorPosition + wallThick,0])
+          cube([wallThick,door[0],door[1]]); 
+          }
+      }
+}
+
+
+
 
 
 module kitchen(in){
@@ -48,7 +108,7 @@ module kitchen(in){
 
   translate(position){
     rotate([0,0,a]){
-//  lamp(70,20,50);
+//  lamp(70,20,50)Stirling PDF app;
        counterCup([[0,0,wallThickness],55,0,36]);
        sink([[0,0,wallThickness],0,42]);
        counterCup([[-30-42,0,wallThickness],55,0,30]);
@@ -64,39 +124,29 @@ module kitchen(in){
     }
   }
 }
-
+;
 module kitchenOne(in){
   position = in[0];           
   a = in[1];  //angle
-
-
   translate(position){
     rotate([0,0,a]){
-    
-//       counterCup([[0,0,wallThickness],55,1,0,36]);
+       counterCup([[0,0,wallThickness],55,0,36]);
+       sink([[0,0,wallThickness],0,42]);
+       counterCup([[-42-30,0,wallThickness],55,0,30]);
+       counterCup([[-42-30-44,0,wallThickness],55,0,44]);
+       stove([[-42-30-44,0,wallThickness],0]);
+       cupboard([[-42-30-44-30,0,wallThickness + 60],0,30]);
+       counterCup([[-42-30-44-30-34,0,wallThickness],55,0,34]);
+       counterCup([[-42-30-44-30-34-34,0,wallThickness],55,0,34]);
+       refrigerator([[-42-30-44-30-34-34-36,0,wallThickness],0,[36,35,70]]);
+       kimsIsland = [[-155,27+40,wallThickness],0,[60,48,37]];
+       brairmanorIsland = [[-155,27+40,wallThickness],0,[50,36,37]];
+       island(kimsIsland);
+       Table([[27,26+54,0],90,42, 94, 5, 4, 36, 1]);
 
-       //translate([1,0,wallThickness])
-         sink([[0,0,0],1,270,44]);
-//       counterCup([[-30-42,0,wallThickness],55,1,0,30]);
-
-       counterCup([[-85,0,wallThickness],55,0,14]);
-       stove([[-84,56,wallThickness],1,270]);
-
-      cupboard([[-72,56,wallThickness + 60],90,30]);
-
-      counterCup([[-84,120,wallThickness],55,270,34]);
-
-      refrigerator([[-25,142,wallThickness],1,0,[36,35,70]]);
-      
-      counterCup([[-84 + 150 -34 + 13,177,wallThickness],55,180,34]);
-//      island([[1-19,75+35,wallThickness],1,270,[50,36,37]]);
-//    island([[0,21,wallThickness],1,90,[60,48,37]]);
-
-       Table([[17+55,47,0],0,42, 94, 5, 4, 36, 1]);
     }
   }
 }
-
 
 
 
@@ -249,4 +299,6 @@ function offset(c,e,numC,wall) = c[0]>0 ?  e[numC-1]+c[numC-1]+wall:wall;
 function equalBins(l,w,n) = [for(i = [1 : n]) (l-((n+2)*w))/(n+1)];
 function getDividers(l,wall,c) = (c[0] == true) ? equalBins(l,wall,c[1]): c;
 function s(s,x,y) = [s*x,x*y];
+
+
 
