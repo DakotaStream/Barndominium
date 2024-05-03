@@ -12,10 +12,10 @@ include <kitchenFurnishings.scad>;
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
-//bathroom2();
+bathroom2();
 //bathroom3();
 //closet3();
-bedroom3();
+//bedroom3();
 //Toilet([[0,0,0],0]);
 
 //SinkDouble([[0,0,wallThickness],180,33,0.5]);
@@ -67,16 +67,17 @@ module bathroom1(){
 module bathroom2(){
  //     pos     a  inside rm  wl  door  pos 
   floorHeight = 6;
-  room([[0,0,floorHeight],0,[58,122,108],5,[30,81],4]);
-  Toilet([[34,93+5-3,floorHeight],180]);
-  SinkDouble([[44,5,floorHeight],90,60,8]);
+  width = 58; 
+  room([[0,0,floorHeight],0,[width,122,108],5,[30,81],4]);
+  Toilet([[width+5,60+5+17,floorHeight],90]);
+  SinkDouble([[width+5,60+5,floorHeight],90,60,8]);
 }
 
 module bathroom3(){
  //     pos     a  inside rm  wl  door  pos 
   floorHeight = 6;
   room([[0,0,floorHeight],0,[112,103,96],5,[30,81],25.5]);
-  Toilet([[34,93+5-3,floorHeight],0]);
+  Toilet([[44,93+5-3,floorHeight],0]);
   SinkDouble([[44,5,floorHeight],0,60,8]);
 }
 module closet3(){
