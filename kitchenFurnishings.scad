@@ -116,4 +116,25 @@ module counterCorner(in){
 }
 
 
-
+module Toilet(in){
+  position = in[0];           
+  angle = in[1];
+  
+  translate(position)
+    rotate([0,0,angle]){
+      translate([0,0,18])
+        cube([18,9,15]); 
+      translate([9,18.2,0])
+        difference(){
+          scale([7,10.5]) 
+            cylinder(18,0.6,1,$fn=40);
+          {
+            translate([0,2.5,6])
+              scale([4,6]) 
+                cylinder(12,0.6,1,$fn=40);
+            translate([0,2.5,0])
+              cylinder(18,2,2,$fn=40);  
+          }
+    }
+  }
+}
