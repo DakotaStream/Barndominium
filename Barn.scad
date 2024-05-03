@@ -11,7 +11,11 @@ include <kitchenFurnishings.scad>;
 //barnAndWindows();
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
-bathroom1();
+//bathroom1();
+//bathroom2();
+//bathroom3();
+//closet3();
+bedroom3();
 //Toilet([[0,0,0],0]);
 
 //SinkDouble([[0,0,wallThickness],180,33,0.5]);
@@ -55,14 +59,37 @@ module allGables(){
 module bathroom1(){
  //     pos     a  inside rm  wl  door  pos 
   floorHeight = 6;
-  room([[0,0,0],0,[42,93,108],5,[30,81],26]);
+  room([[0,0,floorHeight],0,[42,93,108],5,[30,81],26]);
   Toilet([[34,93+5-3,floorHeight],180]);
   Sink([[44,5,floorHeight],0,36]);
-
-
-
 }
 
+module bathroom2(){
+ //     pos     a  inside rm  wl  door  pos 
+  floorHeight = 6;
+  room([[0,0,floorHeight],0,[58,122,108],5,[30,81],4]);
+  Toilet([[34,93+5-3,floorHeight],180]);
+  SinkDouble([[44,5,floorHeight],90,60,8]);
+}
+
+module bathroom3(){
+ //     pos     a  inside rm  wl  door  pos 
+  floorHeight = 6;
+  room([[0,0,floorHeight],0,[112,103,96],5,[30,81],25.5]);
+  Toilet([[34,93+5-3,floorHeight],0]);
+  SinkDouble([[44,5,floorHeight],0,60,8]);
+}
+module closet3(){
+ //     pos     a  inside rm  wl  door  pos 
+  floorHeight = 6;
+  room([[0,0,floorHeight],0,[152,105,96],5,[30,81],27.5]);
+}
+
+module bedroom3(){
+ //     pos     a  inside rm  wl  door  pos 
+  floorHeight = 6;
+  room([[0,0,floorHeight],0,[173,231,96],5,[30,81],173]);
+}
 module wallAndDoor(in){
   position = in[0];           
   angle = in[1];
@@ -87,18 +114,6 @@ module wall(in){
       cube(wall); 
 }
 
-
-module roomn(in){
-  position = in[0];           
-  angle = in[1];
-  insideDim = in[2];
-  wallThick = in[3];
-  door = in[4];
-  doorPosition = in[5];
-  outsideDim = [insideDim[0]+2*wallThick,insideDim[1]+2*wallThick,insideDim[2]];
-
-
- }
 
 module room(in){
   position = in[0];           
