@@ -54,10 +54,10 @@ module allGables(){
 
 module bathroom1(){
  //     pos     a  inside rm  wl  door  pos 
+  floorHeight = 6;
   room([[0,0,0],0,[42,93,108],5,[30,81],26]);
-  Toilet([[0,0,0],0]);
-  SinkDouble([[0,0,wallThickness],180,33,0.5]);
-  Sink([[0,0,wallThickness],180,15]);
+  Toilet([[34,93+5-3,floorHeight],180]);
+  Sink([[44,5,floorHeight],0,36]);
 
 
 
