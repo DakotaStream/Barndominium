@@ -11,11 +11,11 @@ include <kitchenFurnishings.scad>;
 //barnAndWindows();
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
-//bathroom1();
+bathroom1();
 //Toilet([[0,0,0],0]);
 
-// SinkDouble([[0,0,wallThickness],180,46,0.5]);
-Sink([[0,0,wallThickness],180,15]);
+//SinkDouble([[0,0,wallThickness],180,33,0.5]);
+//Sink([[0,0,wallThickness],180,15]);
 
 
 //Chair(30, 30, 5, 35, 3, 30, 1);
@@ -55,6 +55,12 @@ module allGables(){
 module bathroom1(){
  //     pos     a  inside rm  wl  door  pos 
   room([[0,0,0],0,[42,93,108],5,[30,81],26]);
+  Toilet([[0,0,0],0]);
+  SinkDouble([[0,0,wallThickness],180,33,0.5]);
+  Sink([[0,0,wallThickness],180,15]);
+
+
+
 }
 
 module wallAndDoor(in){
