@@ -36,9 +36,7 @@ module refrigerator(in){
 }
 
 
-
-
-module sink(in){
+module Sink(in){
   position  = in[0];
   angle = in[1];
   length = in[2];
@@ -51,10 +49,34 @@ module sink(in){
         {
           rotate([0,0,180])
           {
-            translate([length/2+1,-20,28])
+            translate([length/2-7.25,-20,28])
               linear_extrude(9){ polygon([[0,2], [0, 14],   [2,16], [12.5,16],
               [14.5,14], [14.5,2],  [12.5,0], [2,0], [0,2] ]); } 
-            translate([length/2-15.5,-20,28])
+          }
+        }
+      }
+}
+
+
+
+module SinkDouble(in){
+  position  = in[0];
+  angle = in[1];
+  length = in[2];
+  gapBetween = in[3];
+
+  translate(position)
+    rotate([0,0,angle])
+      difference()
+      {
+        counter([[0,0,0],0,length]);
+        {
+          rotate([0,0,180])
+          {
+            translate([length/2+1+gapBetween,-20,28])
+              linear_extrude(9){ polygon([[0,2], [0, 14],   [2,16], [12.5,16],
+              [14.5,14], [14.5,2],  [12.5,0], [2,0], [0,2] ]); } 
+            translate([length/2-16-gapBetween,-20,28])
             linear_extrude(9){ polygon([[0,2], [0, 14],   [2,16], [12.5,16],
               [14.5,14], [14.5,2],  [12.5,0], [2,0], [0,2] ]); } 
           }

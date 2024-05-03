@@ -2,6 +2,7 @@
 // This include file makes things more organized and smaller.
 //'allFurniture();
 
+
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
 //([position],scale,angle,[length, width, height])
@@ -11,7 +12,11 @@ include <kitchenFurnishings.scad>;
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
-Toilet([[0,0,0],0]);
+//Toilet([[0,0,0],0]);
+
+// SinkDouble([[0,0,wallThickness],180,46,0.5]);
+Sink([[0,0,wallThickness],180,15]);
+
 
 //Chair(30, 30, 5, 35, 3, 30, 1);
 
