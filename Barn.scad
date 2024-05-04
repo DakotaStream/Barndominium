@@ -5,7 +5,7 @@
 
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
-SecondFloorWallHeight = 2;
+SecondFloorWallHeight = 96;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
 //kitchen([[553,0,0],270]);
@@ -13,14 +13,20 @@ SecondFloorWallHeight = 2;
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
-bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
-bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
-closetMaster([[112+5,-2,0],0,SecondFloorWallHeight]);
-bedroomMaster([[5,113,0],180,SecondFloorWallHeight]);
-bedroom1([[127,-156,0],0,SecondFloorWallHeight]);
-closet1([[127,-151,0],270,SecondFloorWallHeight]);
-bedroom2([[127,-369.5,0],0,SecondFloorWallHeight]);
-closet2([[280,-221.5,0],90,SecondFloorWallHeight]);
+  //upstairs();
+  bedroom3([[0,0,0],0,SecondFloorWallHeight]);
+  //closet2([[280,-221.5,0],90,SecondFloorWallHeight]);
+
+module upstairs(){
+  bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
+  bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
+  closetMaster([[112+5,-2,0],0,SecondFloorWallHeight]);
+  bedroomMaster([[5,113,0],180,SecondFloorWallHeight]);
+  bedroom1([[127,-156,0],0,SecondFloorWallHeight]);
+  closet1([[127,-151,0],270,SecondFloorWallHeight]);
+  bedroom2([[127,-369.5,0],0,SecondFloorWallHeight]);
+  closet2([[280,-221.5,0],90,SecondFloorWallHeight]);
+}
 //bedroom3();
 //Toilet([[0,0,0],0]);
 //Tub([[0,0,0],0,[58,29.5,15]]);
@@ -104,8 +110,6 @@ module bedroomMaster(in){
       }
   } 
 }
-
-
 module bathroomMaster(in){
   position = in[0];           
   angle = in[1];
@@ -137,6 +141,7 @@ module closetMaster(in){
       room([[0,0,0],0,[length,width,wallH],5,[30,81],27.5]);
 }
 
+
 module bedroom1(in){
   position = in[0];           
   angle = in[1];
@@ -150,10 +155,8 @@ module bedroom1(in){
         room([[0,0,0],0,[width,length,wallH],5,[30,81],3.5]);
         wall([[5+36,5.5,0],270,[6,30,81]]);
       }
-
   } 
 }
-
 module closet1(in){
   position = in[0];           
   angle = in[1];
@@ -165,7 +168,6 @@ module closet1(in){
     rotate([0,0,angle])
       room([[0,0,0],0,[width,length,wallH],5,[30,81],36]);
 }
-
 
 
 module bedroom2(in){
@@ -183,7 +185,6 @@ module bedroom2(in){
       }
   } 
 }
-
 module closet2(in){
   position = in[0];           
   angle = in[1];
@@ -194,6 +195,32 @@ module closet2(in){
   translate(position)
     rotate([0,0,angle])
       room([[0,0,0],0,[width,length,wallH],5,[30,81],36]);
+}
+
+module bedroom3(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 143;
+  length = 143;
+
+ // wall([[0,0,0],0,[5,143,wallH]]);
+  wallAndDoor([[0,0,0],0,[5,189,wallH],[30,81],3]);
+
+
+
+
+}
+module closet3(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 60.5;
+  length = 69.5;
+
+  translate(position)
+    rotate([0,0,angle])
+      room([[0,0,0],0,[width,length,wallH],5,[30,81],38]);
 }
 
 
@@ -207,8 +234,8 @@ module wallAndDoor(in){
     rotate([0,0,angle])
       difference(){
         cube(wall); 
-        translate([0,doorPosition,0])
-          cube([wall[0],door[0],door[1]]); 
+        translate([-0.5,doorPosition,0])
+          cube([wall[0]+1,door[0],door[1]]); 
         }
 }
 
