@@ -167,22 +167,20 @@ module Tub(in){
   angle = in[1];
   dim = in[2];
   
- // translate([0,0,dim[2]+3])
- //   rotate([0,270,0])
- //         cylinder(2,1.5,2,$fn=10); 
-
-  knob([[0,dim[1]/2+3,dim[2]+3],0]);
-  knob([[0,dim[1]/2-3,dim[2]+3],0]);
-
   translate(position)
     rotate([0,0,angle]){
+      translate([6,dim[1]/2,dim[2]+6])
+        rotate([0,270,0])
+          cylinder(6,0.75,1,$fn=20); 
+      knob([[0,dim[1]/2+3,dim[2]+3],0]);
+      knob([[0,dim[1]/2-3,dim[2]+3],0]);
       difference(){
         cube(dim); 
-         translate([dim[0]/2,dim[1]/2,3])
-         scale([dim[0]-3,dim[1]-3])
-          cylinder(dim[2],0.5,0.5,$fn=30); 
+        translate([dim[0]/2,dim[1]/2,3])
+          scale([dim[0]-3,dim[1]-3])
+            cylinder(dim[2],0.5,0.5,$fn=30); 
       }
-      }
+    }
 }
 
 module knob(in){
