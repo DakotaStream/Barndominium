@@ -14,8 +14,8 @@ SecondFloorWallHeight = 96;
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
   //upstairs();
-  bedroom3([[0,0,0],0,SecondFloorWallHeight]);
   //closet2([[280,-221.5,0],90,SecondFloorWallHeight]);
+  bedroom3([[0,0,0],0,SecondFloorWallHeight]);
 
 module upstairs(){
   bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
@@ -210,7 +210,8 @@ module bedroom3(in){
   windowWall = [[-143-5,203+5,0],180,[5,203,wallH],[83.5,wallH],94];
   doorWall = [[0,189+5,0],180,[5,189,wallH],[30,81],3.5];
   backWall = [[0,0,0],90,[5,143+10,wallH]];
-  miniWall = [[0,198+5,0],90,[5,46.5+10,wallH]];
+  miniWall = [[0,189+5,0],90,[5,46.5+10,wallH]];
+  miniWall2 = [[0,189+5,0],0,[5,18.5,wallH]];
 
   wall(backWall);
   wallAndDoor(doorWall);
@@ -219,6 +220,7 @@ module bedroom3(in){
 
   //wallAndDoor(closetWall);
   wall(miniWall);
+  wall(miniWall2);
 
 
 
