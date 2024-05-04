@@ -5,7 +5,7 @@
 
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
-SecondFloorWallHeight = 9;
+SecondFloorWallHeight = 2;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
 //kitchen([[553,0,0],270]);
@@ -14,12 +14,13 @@ SecondFloorWallHeight = 9;
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
 bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
-//bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
-//closetMaster([[112+5,-2,0],0,SecondFloorWallHeight]);
-//bedroomMaster([[5,113,0],180,SecondFloorWallHeight]);
+bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
+closetMaster([[112+5,-2,0],0,SecondFloorWallHeight]);
+bedroomMaster([[5,113,0],180,SecondFloorWallHeight]);
 bedroom1([[127,-156,0],0,SecondFloorWallHeight]);
 closet1([[127,-151,0],270,SecondFloorWallHeight]);
-//bedroom2([[126,-356,0],0,SecondFloorWallHeight]);
+bedroom2([[127,-369.5,0],0,SecondFloorWallHeight]);
+closet2([[280,-221.5,0],90,SecondFloorWallHeight]);
 //bedroom3();
 //Toilet([[0,0,0],0]);
 //Tub([[0,0,0],0,[58,29.5,15]]);
@@ -180,9 +181,21 @@ module bedroom2(in){
         room([[0,0,0],0,[width,length,wallH],5,[30,81],143-30-3.5]);
         wall([[width-25-35.5,length + 5 + 5.5,0],270,[6,30,81]]);
       }
-
   } 
 }
+
+module closet2(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 60.5;
+  length = 69.5;
+
+  translate(position)
+    rotate([0,0,angle])
+      room([[0,0,0],0,[width,length,wallH],5,[30,81],36]);
+}
+
 
 module wallAndDoor(in){
   position = in[0];           
