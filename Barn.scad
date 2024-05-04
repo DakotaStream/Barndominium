@@ -13,11 +13,12 @@ SecondFloorWallHeight = 9;
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
-//bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
+bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
 bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
-//closetMaster([[112+5,-2,0],0,SecondFloorWallHeight]);
+closetMaster([[112+5,-2,0],0,SecondFloorWallHeight]);
 bedroomMaster([[5,113,0],180,SecondFloorWallHeight]);
 bedroom1([[126,-156,0],0,SecondFloorWallHeight]);
+bedroom2([[126,-356,0],0,SecondFloorWallHeight]);
 //bedroom3();
 //Toilet([[0,0,0],0]);
 //Tub([[0,0,0],0,[58,29.5,15]]);
@@ -153,6 +154,22 @@ module bedroom1(in){
   } 
 }
 
+module bedroom2(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 143;
+  length = 143;
+
+  translate(position)
+    rotate([0,0,angle]){
+      difference(){ 
+        room([[0,0,0],0,[width,length,wallH],5,[30,81],143-30-3.5]);
+        wall([[width-25-35.5,length + 5 + 5.5,0],270,[6,30,81]]);
+      }
+
+  } 
+}
 
 module wallAndDoor(in){
   position = in[0];           
