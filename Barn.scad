@@ -211,17 +211,19 @@ module bedroom3(in){
   windowWall = [[-143-5,203+5,0],180,[5,203,wallH],[83.5,wallH],94];
   doorWall = [[0,189+5,0],180,[5,189,wallH],[30,81],3.5];
   backWall = [[0,0,0],90,[5,143+10,wallH]];
-  miniWall = [[0,189+5,0],90,[5,46.5+10,wallH]];
-  miniWall2 = [[0,189+5,0],0,[5,18.5,wallH]];
+  miniWall = [[0,189+5,0],90,[5,46.5,wallH]];
+  miniWall2 = [[-46.5,189+5,0],0,[5,18.5,wallH]];
+  window = [[-148,119,0],180,[6,83.5,wallH],5,[83.5,wallH],0];
+  closet = [[-46.5,208,0],90,[27.5,96.5,wallH],5,[60,81],18.5];
 
   wall(backWall);
   wallAndDoor(doorWall);
   wallAndDoor(windowWall);
   wallAndDoor(closetWall);
-
-  //wallAndDoor(closetWall);
   wall(miniWall);
   wall(miniWall2);
+  room(window);
+  room(closet);
 }
 
 
