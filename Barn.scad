@@ -204,7 +204,8 @@ module bedroom3(in){
   width = 143;
   length = 143;
 
-
+  translate(position)
+    rotate([0,0,angle]){
 
   closetWall = [[-41.5-5,203+5,0],90,[5,96.5+10,wallH],[60,81],18.5+5];
   windowWall = [[-143-5,203+5,0],180,[5,203,wallH],[83.5,wallH],94];
@@ -221,7 +222,7 @@ module bedroom3(in){
   //wallAndDoor(closetWall);
   wall(miniWall);
   wall(miniWall2);
-
+}
 
 
 }
