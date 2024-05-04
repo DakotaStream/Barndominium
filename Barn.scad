@@ -13,12 +13,12 @@ SecondFloorWallHeight = 9;
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
-//bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
+bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
 //bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
 //closetMaster([[112+5,-2,0],0,SecondFloorWallHeight]);
 //bedroomMaster([[5,113,0],180,SecondFloorWallHeight]);
-//bedroom1([[126,-156,0],0,SecondFloorWallHeight]);
-closet1([[126,-156,0],0,SecondFloorWallHeight]);
+bedroom1([[127,-156,0],0,SecondFloorWallHeight]);
+closet1([[127,-151,0],270,SecondFloorWallHeight]);
 //bedroom2([[126,-356,0],0,SecondFloorWallHeight]);
 //bedroom3();
 //Toilet([[0,0,0],0]);
@@ -162,7 +162,7 @@ module closet1(in){
 
   translate(position)
     rotate([0,0,angle])
-      room([[0,0,0],0,[length,width,wallH],5,[30,81],36]);
+      room([[0,0,0],0,[width,length,wallH],5,[30,81],36]);
 }
 
 
