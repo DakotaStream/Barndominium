@@ -167,9 +167,12 @@ module Tub(in){
   angle = in[1];
   dim = in[2];
   
-  translate([0,0,0])
-    rotate([0,270,0])
-          cylinder(3,2,3,$fn=10); 
+ // translate([0,0,dim[2]+3])
+ //   rotate([0,270,0])
+ //         cylinder(2,1.5,2,$fn=10); 
+
+  knob([[0,dim[1]/2+3,dim[2]+3],0]);
+  knob([[0,dim[1]/2-3,dim[2]+3],0]);
 
   translate(position)
     rotate([0,0,angle]){
@@ -182,3 +185,12 @@ module Tub(in){
       }
 }
 
+module knob(in){
+  position = in[0];           
+  angle = in[1];
+  translate([position[0]+2.5,position[1],position[2]])
+    rotate([0,270,angle]){
+       cylinder(2,1,1.5,$fn=20); 
+       cylinder(2.5,.3,.3,$fn=10); 
+       }
+} 
