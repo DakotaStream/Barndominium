@@ -72,6 +72,7 @@ module bathroom2(){
   Toilet([[width+5,60+5+7,floorHeight],90]);
   SinkDouble([[width+5,60+5,floorHeight],90,60,8]);
   Tub([[width+5,122+5,floorHeight],180,[58,29.5,15]]);
+
 }
 
 
@@ -82,6 +83,7 @@ module bathroomMaster(){
   Toilet([[60+5+17,5+3,0],0]);
   SinkDouble([[60+5,5,0],0,60,8]);
   Tub([[5,width+5-41.5,0],0,[59,41.5,15]]);
+  wall([[59+5,width-44+5,0],0,[7,44,96]]);
 }
 module closet3(){
  //     pos     a  inside rm  wl  door  pos 
@@ -89,11 +91,7 @@ module closet3(){
   room([[0,0,floorHeight],0,[152,105,96],5,[30,81],27.5]);
 }
 
-module bedroom3(){
- //     pos     a  inside rm  wl  door  pos 
-  floorHeight = 6;
-  room([[0,0,floorHeight],0,[173,231,96],5,[30,81],173]);
-}
+
 module wallAndDoor(in){
   position = in[0];           
   angle = in[1];
