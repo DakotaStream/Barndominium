@@ -13,8 +13,9 @@ SecondFloorWallHeight = 6;
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
-  upstairs();
+//  upstairs();
 
+       Desk([[17+55,47,0],0,61,25.5, 25.5, 4, 3, 1]);
 
 module upstairs(){
   bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
@@ -213,11 +214,14 @@ module bedroom2(in){
       BedTwin([[147,73,0],90]);
 
 //pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
-      Dresser = [[80,7,0],0,63,19.5, 34, 0, 2.5, 3,3, 1];
+      Dresser = [[60,7,0],0,42,19.5, 34, 0, 2.5, 3,3, 1];
         Thing(Dresser);
+      backDresser = [[103,7,0],0,42,19.5, 48, 0, 2.5, 3,3, 1];
+        Thing(backDresser);
       NightStand = [[145,124,0],90,21,15, 22, 0, 2.5, 3, 3, 1];
         Thing(NightStand);
  
+       Desk([[17+55,47,0],0,42, 94, 5, 4, 36, 1]);
 
   } 
 }
@@ -284,8 +288,16 @@ module loft(in){
 
   
   loftWall = [[152,0,0],90,[5,152,wallH]];
+    wall(loftWall);
+  endTable = [[18,7,0],90,21,15, 22, 0, 2.5, 3, 3, 1];
+    Thing(endTable);
+  endTableDoor = [[18,120,0],90,21,15, 22, 0, 2.5, 3, 3, 1];
+    Thing(endTableDoor);
 
-  wall(loftWall);
+  
+  flatScreen = [[100,30,40],0,[3,57.5,35]];
+    wall(flatScreen);
+
   }
 }
 

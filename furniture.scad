@@ -71,17 +71,36 @@ module Chair(in){
   legHeight = in[8];
   legOffset = in[9];
 
-
 Table([[0,0,0],0,seatWidth, seatDepth, seatThickness, legWidth, legHeight, legOffset]);
-
-
-
 
   translate([0, 0, legHeight + seatThickness])
     cube([seatWidth, backWidth, backHeight]);
 }
 
 
+
+//position, angle, topW, topD, modThick, modW1, modW2 legW, legH, legOffset
+module Desk(in){
+  position = in[0];           
+  angle = in[1];
+  topW = in[2];
+  topD = in[3];
+  modThick = in[4];
+  legW = in[5];
+  legH = in[6];
+  legOffset = in[7];
+
+  modW1 = 17; 
+  modW2 = 24; 
+  legSpace = topW - modW1;
+  translate(position)
+    rotate([0,0,angle]){
+      Table([[0,0,0],0,modW1,topD,modThick,legW,legH,legOffset]);
+      Table([[legSpace,0,0],0,modW2,topD,modThick,legW,legH,legOffset]);
+      top = [[0,0,modThick],0,[topW,topD,3]];
+        wall(top);
+    }
+}
 
 
 
@@ -185,4 +204,14 @@ module bulb(h){
       translate([0, 0, h/9.5]) 
         cylinder(h/70,h/37,h/37,$fn=f);
     } 
+}
+
+
+module box(in){
+  position = in[0];           
+  angle = in[1];
+  wall = in[2];
+  translate(position)
+    rotate([0,0,angle])
+      cube(wall); 
 }
