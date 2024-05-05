@@ -5,7 +5,7 @@
 
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
-SecondFloorWallHeight = 96;
+SecondFloorWallHeight = 2;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
 //kitchen([[553,0,0],270]);
@@ -213,7 +213,7 @@ module bedroom3(in){
   doorWall = [[0,189+5,0],180,[5,189,wallH],[30,81],3.5];
   backWall = [[0,0,0],90,[5,143+10,wallH]];
   miniWall = [[0,189+5,0],90,[5,46.5,wallH]];
-  miniWall2 = [[-46.5,189+5,0],0,[5,18.5,wallH]];
+  miniWall2 = [[-51.5,189+5,0],0,[5,18.5,wallH]];
   window = [[-148,119,0],180,[6,83.5,wallH],5,[83.5,wallH],0];
   closet = [[-46.5,208,0],90,[27.5,96.5,wallH],5,[60,81],18.5];
   
@@ -241,7 +241,7 @@ module loft(in){
     rotate([0,0,angle]){
 
   
-  loftWall = [[300,0,0],90,[5,400.5,wallH]];
+  loftWall = [[152,0,0],90,[5,152,wallH]];
 
   wall(loftWall);
   }
