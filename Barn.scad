@@ -126,7 +126,7 @@ module bathroomMaster(in){
       Tub([[5,width+5-41.5,0],0,[59,41.5,15]]);
       wall([[59+5,width-44+5,0],0,[7,44,wallH]]);
 
-    //  BedKing([[-50,106,0],180]);
+      BedKing([[-50,106,0],180]);
   }
 }
 module closetMaster(in){
@@ -187,7 +187,7 @@ module bedroom2(in){
         wall([[width-25-35.5,length + 5 + 5.5,0],270,[6,30,81]]);
       }
 
-      BedTwin([[90,8,0],0]);
+      BedTwin([[147,60,0],90]);
   } 
 }
 module closet2(in){
@@ -230,6 +230,10 @@ module bedroom3(in){
   wall(miniWall2);
   room(window);
   room(closet);
+
+  BedQueen([[-100,7,0],0]);
+
+
   }
 }
 
