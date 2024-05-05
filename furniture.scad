@@ -1,14 +1,73 @@
 numberOfFaces = 20;
 
 
-module Chair(seatWidth, seatDepth, seatThickness, backHeight, legWidth, legHeight, legOffset){
-  //Seat portion is just a table, so just use Table to build it.
+
+module BedKing(in){
+  position = in[0];           
+  angle = in[1];
+  translate(position)
+    rotate([0,0,angle]){
+      bed = [[0,0,0],0,81,93, 22, 35, 3, 3, 5, 1];
+      Chair(bed);
+  }
+}
+
+
+module BedQueen(in){
+  position = in[0];           
+  angle = in[1];
+  translate(position)
+    rotate([0,0,angle]){
+      bed = [[0,0,0],0,65,85.5, 22, 35, 3, 3, 5, 1];
+      Chair(bed);
+  }
+}
+
+module BedTwin(in){
+  position = in[0];           
+  angle = in[1];
+  translate(position)
+    rotate([0,0,angle]){
+      bed = [[0,0,0],0,43,78.5, 22, 35, 3, 3, 5, 1];
+      Chair(bed);
+  }
+}
+
+
+
+
+module Chair(in){
+  position = in[0];           
+  angle = in[1];
+  seatWidth = in[2];
+  seatDepth = in[3];
+  seatThickness = in[4];
+  backHeight = in[5];
+  backWidth = in[6];
+  legWidth = in[7];
+  legHeight = in[8];
+  legOffset = in[9];
+
+
+Table([[0,0,0],0,seatWidth, seatDepth, seatThickness, legWidth, legHeight, legOffset]);
+
+
+
+
+  translate([0, 0, legHeight + seatThickness])
+    cube([seatWidth, backWidth, backHeight]);
+}
+
+
+
+module ChairOld(seatWidth, seatDepth, seatThickness, backHeight, backWidth, legWidth, legHeight, legOffset){
   Table([[0,0,0],0,seatWidth, seatDepth, seatThickness, legWidth, legHeight, legOffset]);
  
-  //Chair Back
   translate([0, 0, legHeight + seatThickness])
-    cube([seatWidth, seatThickness, backHeight]);
+    cube([seatWidth, backWidth, backHeight]);
 }
+
+
 
 
 module Table(in){

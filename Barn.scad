@@ -8,13 +8,13 @@ include <kitchenFurnishings.scad>;
 SecondFloorWallHeight = 2;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
-//kitchen([[553,0,0],270]);
+//kitchen([[5,  bin(barn);53,0,0],270]);
 //barnAndWindows();
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
   upstairs();
-  //closet2([[280,-221.5,0],90,SecondFloorWallHeight]);
+
 
 module upstairs(){
   bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
@@ -28,16 +28,13 @@ module upstairs(){
   bedroom3([[-25,-369.5,0],0,SecondFloorWallHeight]);
   loft([[-25,-369.5,0],0,SecondFloorWallHeight]);
 }
-//bedroom3();
-//Toilet([[0,0,0],0]);
-//Tub([[0,0,0],0,[58,29.5,15]]);
-//SinkDouble([[0,0,wallThickness],180,33,0.5]);
-//Sink([[0,0,wallThickness],180,15]);
 
 
-//Chair(30, 30, 5, 35, 3, 30, 1);
+//Chair(seatWidth, seatDepth, seatThickness, backHeight, backwidth, legWidth, legHeight, legOffset){
+//Chair([[0,0,0],0,30, 30, 5, 35, 3, 3, 30, 1]);
+//Chair(30, 30, 5, 35, 3, 3, 30, 1);
 
-
+//dimensions = in[2];
 //Chair(seatWidth, seatDepth, seatThickness, backHeight, legWidth, legHeight, legOffset)
 module barnAndWindows(){
   difference(){
@@ -128,6 +125,8 @@ module bathroomMaster(in){
       SinkDouble([[60+5,5,0],0,60,8]);
       Tub([[5,width+5-41.5,0],0,[59,41.5,15]]);
       wall([[59+5,width-44+5,0],0,[7,44,wallH]]);
+
+    //  BedKing([[-50,106,0],180]);
   }
 }
 module closetMaster(in){
@@ -155,7 +154,10 @@ module bedroom1(in){
       difference(){ 
         room([[0,0,0],0,[width,length,wallH],5,[30,81],3.5]);
         wall([[5+36,5.5,0],270,[6,30,81]]);
+
+
       }
+      BedTwin([[90,152,0],180]);
   } 
 }
 module closet1(in){
@@ -184,6 +186,8 @@ module bedroom2(in){
         room([[0,0,0],0,[width,length,wallH],5,[30,81],143-30-3.5]);
         wall([[width-25-35.5,length + 5 + 5.5,0],270,[6,30,81]]);
       }
+
+      BedTwin([[90,8,0],0]);
   } 
 }
 module closet2(in){
