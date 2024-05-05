@@ -5,7 +5,7 @@
 
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
-SecondFloorWallHeight = 2;
+SecondFloorWallHeight = 6;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
 //kitchen([[5,  bin(barn);53,0,0],270]);
@@ -106,6 +106,16 @@ module bedroomMaster(in){
         room([[0,0,0],0,[width,length,wallH],5,[30,81],47.5]);
         wall([[-0.5,length-30+5-24.5,0],0,[6,30,81]]);
       }
+
+      BedKing([[60,7,0],0]);
+//pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
+      vikkisDresser = [[120,235,0],180,63,19.5, 40, 30, 2.5, 3, 0, 1];
+        Thing(vikkisDresser);
+      vikkisNightStand = [[23,7,0],0,24,18.5, 29.5, 0, 2.5, 3, 0, 1];
+        Thing(vikkisNightStand);
+      mikesNightStand = [[150,7,0],0,24,18.5, 29.5, 0, 2.5, 3, 0, 1];
+        Thing(mikesNightStand);
+
   } 
 }
 module bathroomMaster(in){
@@ -126,7 +136,6 @@ module bathroomMaster(in){
       Tub([[5,width+5-41.5,0],0,[59,41.5,15]]);
       wall([[59+5,width-44+5,0],0,[7,44,wallH]]);
 
-      BedKing([[-50,106,0],180]);
   }
 }
 module closetMaster(in){
@@ -137,8 +146,11 @@ module closetMaster(in){
   length = 152;
 
   translate(position)
-    rotate([0,0,angle])
+    rotate([0,0,angle]){
       room([[0,0,0],0,[length,width,wallH],5,[30,81],27.5]);
+    mikesDresser = [[155,45,0],90,25,16.5, 49.5, 0, 2.5, 3, 0, 1];
+      Thing(mikesDresser);
+    }
 }
 
 
