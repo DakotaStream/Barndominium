@@ -86,19 +86,20 @@ module Desk(in){
   topW = in[2];
   topD = in[3];
   modThick = in[4];
-  legW = in[5];
-  legH = in[6];
-  legOffset = in[7];
+  modW1 = in[5]; 
+  modW2 = in[6]; 
 
-  modW1 = 17; 
-  modW2 = 24; 
+  legW = in[7];
+  legH = in[8];
+  legOffset = in[9];
+
   legSpace = topW - modW1;
   translate(position)
     rotate([0,0,angle]){
       Table([[0,0,0],0,modW1,topD,modThick,legW,legH,legOffset]);
       Table([[legSpace,0,0],0,modW2,topD,modThick,legW,legH,legOffset]);
       top = [[0,0,modThick],0,[topW,topD,3]];
-        wall(top);
+        box(top);
     }
 }
 

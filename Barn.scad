@@ -13,9 +13,9 @@ SecondFloorWallHeight = 6;
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
-//  upstairs();
+  upstairs();
 
-       Desk([[17+55,47,0],0,61,25.5, 25.5, 4, 3, 1]);
+  //Desk([[17+55,47,0],0,61,25.5, 25.5, 2, 3, 1]);
 
 module upstairs(){
   bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
@@ -179,8 +179,7 @@ module bedroom1(in){
         Thing(Dresser2);
       NightStand = [[120,134,0],0,21,15, 22, 0, 2.5, 3, 3, 1];
         Thing(NightStand);
- 
-
+      Desk([[35,45,0],90,61,25.5, 25.5, 17, 17, 2, 3, 1]);
 
   } 
 }
@@ -213,15 +212,15 @@ module bedroom2(in){
 
       BedTwin([[147,73,0],90]);
 
-//pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
+      //pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
       Dresser = [[60,7,0],0,42,19.5, 34, 0, 2.5, 3,3, 1];
         Thing(Dresser);
       backDresser = [[103,7,0],0,42,19.5, 48, 0, 2.5, 3,3, 1];
         Thing(backDresser);
       NightStand = [[145,124,0],90,21,15, 22, 0, 2.5, 3, 3, 1];
         Thing(NightStand);
- 
-       Desk([[17+55,47,0],0,42, 94, 5, 4, 36, 1]);
+      //position, angle, topW, topD, modThick, modW1, modW2 legW, legH, legOffset
+      Desk([[35,27,0],90,61,25.5, 25.5, 17, 17, 2, 3, 1]);
 
   } 
 }
@@ -267,7 +266,7 @@ module bedroom3(in){
   room(closet);
 
   BedQueen([[-100,7,0],0]);
-//pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
+  //pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
   nightStand = [[-31,9,0],0,24,18.5, 26.5, 0, 2.5, 3, 3, 1];
     Thing(nightStand);
 
@@ -294,9 +293,12 @@ module loft(in){
   endTableDoor = [[18,120,0],90,21,15, 22, 0, 2.5, 3, 3, 1];
     Thing(endTableDoor);
 
-  
-  flatScreen = [[100,30,40],0,[3,57.5,35]];
-    wall(flatScreen);
+   //position, angle, topW, topD, modThick, modW1, modW2 legW, legH, legOffset
+  Desk([[150,47,0],90,58,15.5, 28, 17.5, 17.5, 2, 0, 1]);
+
+ 
+  flatScreen = [[140,47,32],0,[3,57.5,35]];
+    box(flatScreen);
 
   }
 }
