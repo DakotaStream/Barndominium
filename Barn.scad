@@ -109,7 +109,7 @@ module bedroomMaster(in){
 
       BedKing([[60,7,0],0]);
 //pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
-      vikkisDresser = [[120,235,0],180,63,19.5, 40, 30, 2.5, 3, 0, 1];
+      vikkisDresser = [[120,235,0],180,59.5,16.5, 44.5, 24, 2.5, 3, 0, 1];
         Thing(vikkisDresser);
       vikkisNightStand = [[23,7,0],0,24,18.5, 29.5, 0, 2.5, 3, 0, 1];
         Thing(vikkisNightStand);
@@ -170,6 +170,15 @@ module bedroom1(in){
 
       }
       BedTwin([[90,152,0],180]);
+
+//pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
+      kyleesDresser = [[80,7,0],0,63,19.5, 34, 0, 2.5, 3,3, 1];
+        Thing(kyleesDresser);
+      vikkisNightStand = [[23,7,0],0,24,18.5, 29.5, 0, 2.5, 3, 3, 1];
+        Thing(vikkisNightStand);
+ 
+
+
   } 
 }
 module closet1(in){

@@ -28,7 +28,7 @@ module BedTwin(in){
   angle = in[1];
   translate(position)
     rotate([0,0,angle]){
-      bed = [[0,0,0],0,43,78.5, 22, 22, 3, 3, 5, 1];
+      bed = [[0,0,0],0,43,78.5, 15, 22, 3, 3, 7, 1];
       Chair(bed);
   }
 }
