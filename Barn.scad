@@ -109,10 +109,10 @@ module bedroomMaster(in){
 
       BedKing([[60,7,0],0]);
 //pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
-      vikkisDresser = [[120,235,0],180,59.5,16.5, 44.5, 24, 2.5, 3, 0, 1];
-        Thing(vikkisDresser);
-      vikkisNightStand = [[23,7,0],0,24,18.5, 29.5, 0, 2.5, 3, 0, 1];
-        Thing(vikkisNightStand);
+      Dresser = [[120,235,0],180,59.5,16.5, 44.5, 24, 2.5, 3, 0, 1];
+        Thing(Dresser);
+      NightStand = [[23,7,0],0,24,18.5, 29.5, 0, 2.5, 3, 0, 1];
+        Thing(NightStand);
       mikesNightStand = [[150,7,0],0,24,18.5, 29.5, 0, 2.5, 3, 0, 1];
         Thing(mikesNightStand);
 
@@ -148,8 +148,8 @@ module closetMaster(in){
   translate(position)
     rotate([0,0,angle]){
       room([[0,0,0],0,[length,width,wallH],5,[30,81],27.5]);
-    mikesDresser = [[155,45,0],90,25,16.5, 49.5, 0, 2.5, 3, 0, 1];
-      Thing(mikesDresser);
+    Dresser = [[155,45,0],90,25,16.5, 49.5, 0, 2.5, 3, 0, 1];
+      Thing(Dresser);
     }
 }
 
@@ -172,12 +172,12 @@ module bedroom1(in){
       BedTwin([[110,152,0],180]);
 
 //pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
-      kyleesDresser = [[80,7,0],0,63,19.5, 34, 0, 2.5, 3,3, 1];
-        Thing(kyleesDresser);
-      kyleesDresser2 = [[25,110,0],90,42.5,19.5, 48, 0, 2.5, 3,3, 1];
-        Thing(kyleesDresser2);
-      kyleesNightStand = [[120,134,0],0,21,15, 22, 0, 2.5, 3, 3, 1];
-        Thing(kyleesNightStand);
+      Dresser = [[80,7,0],0,63,19.5, 34, 0, 2.5, 3,3, 1];
+        Thing(Dresser);
+      Dresser2 = [[25,110,0],90,42.5,19.5, 48, 0, 2.5, 3,3, 1];
+        Thing(Dresser2);
+      NightStand = [[120,134,0],0,21,15, 22, 0, 2.5, 3, 3, 1];
+        Thing(NightStand);
  
 
 
@@ -210,13 +210,13 @@ module bedroom2(in){
         wall([[width-25-35.5,length + 5 + 5.5,0],270,[6,30,81]]);
       }
 
-      BedTwin([[147,60,0],90]);
+      BedTwin([[147,73,0],90]);
 
 //pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
-      taeganDresser = [[80,7,0],0,63,19.5, 34, 0, 2.5, 3,3, 1];
-        Thing(taeganDresser);
-      taeganNightStand = [[120,134,0],90,21,15, 22, 0, 2.5, 3, 3, 1];
-        Thing(taeganNightStand);
+      Dresser = [[80,7,0],0,63,19.5, 34, 0, 2.5, 3,3, 1];
+        Thing(Dresser);
+      NightStand = [[145,124,0],90,21,15, 22, 0, 2.5, 3, 3, 1];
+        Thing(NightStand);
  
 
   } 
@@ -263,6 +263,9 @@ module bedroom3(in){
   room(closet);
 
   BedQueen([[-100,7,0],0]);
+//pos an Width Depth seatThickness backHeight backWidth legWidth legHeight legOffset
+  nightStand = [[-31,9,0],0,24,18.5, 26.5, 0, 2.5, 3, 3, 1];
+    Thing(nightStand);
 
 
   }
