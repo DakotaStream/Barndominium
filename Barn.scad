@@ -5,17 +5,26 @@
 
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
-SecondFloorWallHeight = 20;
+SecondFloorWallHeight = 96;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
 //kitchen([[5,  bin(barn);53,0,0],270]);
-//barnAndWindows();
+barnAndWindows();
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
+// beams 16
+// upstairs ceiling height 96
+// downstairs ceiling height 108
+translate([100,-100,124])
+  rotate([0,0,90])
+  upstairs();
+
+
+translate([600,-100,124])
+  rotate([0,0,90])
   upstairs();
   //Desk([[17+55,47,0],0,61,25.5, 25.5, 2, 3, 1]);
-
 module upstairs(){
   bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
   bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
