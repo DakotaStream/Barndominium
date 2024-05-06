@@ -108,6 +108,7 @@ module Couch(in){
   position = in[0];           
   angle = in[1];
   length = in[2];
+  color("Wheat")
   translate(position)
     rotate([0,270,angle]){
   linear_extrude(4){ polygon([[0,0], [0, 30], [20,30],[20,7],[38,0],[38,-7],[0,0] ]); } 

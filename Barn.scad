@@ -295,7 +295,7 @@ module loft(in){
    //position, angle, topW, topD, modThick, modW1, modW2 legW, legH, legOffset
   Desk([[150,47,0],90,58,15.5, 28, 17.5, 17.5, 2, 0, 1]);
 
-  Couch([[15,40,0],270,60]);
+  Couch([[15,33,0],270,84]);
  
   flatScreen = [[140,47,32],0,[3,57.5,35]];
     box(flatScreen);
@@ -339,6 +339,7 @@ module wall(in){
   position = in[0];           
   angle = in[1];
   wall = in[2];
+  color("Wheat")
   translate(position)
     rotate([0,0,angle])
       cube(wall); 
@@ -354,6 +355,7 @@ module room(in){
   doorPosition = in[5];
   outsideDim = [insideDim[0]+2*wallThick,insideDim[1]+2*wallThick,insideDim[2]];
  
+  color("Wheat")
   translate(position)
     rotate([0,0,angle])
       difference(){
