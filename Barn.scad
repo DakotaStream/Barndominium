@@ -5,7 +5,7 @@
 
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
-SecondFloorWallHeight = 6;
+SecondFloorWallHeight = 20;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
 //kitchen([[5,  bin(barn);53,0,0],270]);
@@ -14,7 +14,6 @@ SecondFloorWallHeight = 6;
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
   upstairs();
-
   //Desk([[17+55,47,0],0,61,25.5, 25.5, 2, 3, 1]);
 
 module upstairs(){
@@ -296,6 +295,7 @@ module loft(in){
    //position, angle, topW, topD, modThick, modW1, modW2 legW, legH, legOffset
   Desk([[150,47,0],90,58,15.5, 28, 17.5, 17.5, 2, 0, 1]);
 
+  Couch([[15,40,0],270,60]);
  
   flatScreen = [[140,47,32],0,[3,57.5,35]];
     box(flatScreen);
@@ -554,7 +554,7 @@ module message(in,numDv,dvSpace,totCompart,totWall,allIn,spaceLeftOver){
     echo (str(msg3,msg4,msg5,msg6,stars));
 } 
 
-harborfreightXY = ([560,490]); //w,d
+harborfreightXY = ([560,490]); //w
 harborfreightXYRef1 = ([562,492]); //w,d
 harborfreightXYRef2 = ([568,494]);
 harborfreightDrawerHeightRef = ([41.77 ,41.04 ,41.24 ,69.54 ,69.32 ,90.45 ,146.07 ,144.91]);

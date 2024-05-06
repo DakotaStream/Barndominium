@@ -104,7 +104,19 @@ module Desk(in){
 }
 
 
-
+module Couch(in){
+  position = in[0];           
+  angle = in[1];
+  length = in[2];
+  translate(position)
+    rotate([0,270,angle]){
+  linear_extrude(4){ polygon([[0,0], [0, 30], [20,30],[20,7],[38,0],[38,-7],[0,0] ]); } 
+  translate([0,0,4]) 
+  linear_extrude(length - 8){ polygon([[0,0], [0, 30], [17,30],[17,7],[38,0],[38,-7],[0,0] ]);} 
+  translate([0,0,length - 4]) 
+  linear_extrude(4){ polygon([[0,0], [0, 30], [22,30],[22,7],[38,0],[38,-7],[0,0] ]); } 
+  }
+}
 
 module Table(in){
   position = in[0];           
@@ -216,3 +228,29 @@ module box(in){
     rotate([0,0,angle])
       cube(wall); 
 }
+
+
+
+
+//radius = 20;
+//angles = [45, 135];
+//fn = 24;
+
+module sector(radius, angles, fn = 24) {
+    r = radius / cos(180 / fn);
+    step = -360 / fn;
+
+    points = concat([[0, 0]],
+        [for(a = [angles[0] : step : angles[1] - 360]) 
+            [r * cos(a), r * sin(a)]
+        ],
+        [[r * cos(angles[1]), r * sin(angles[1])]]
+    );
+
+    difference() {
+        circle(radius, $fn = fn);
+        polygon(points);
+    }
+}
+
+//sector(radius, angles, fn);  
