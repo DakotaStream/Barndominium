@@ -2,28 +2,32 @@
 // This include file makes things more organized and smaller.
 //'allFurniture();
 
-
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
 SecondFloorWallHeight = 96;
+FirstFloorWallHeight = 96;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
+briaormanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
+
 //kitchen([[5,  bin(barn);53,0,0],270]);
-barnAndWindows();
+//barnAndWindows();
 //allGables();
 //roof([barnLength + 50, barnWidth,barnHeight,gableHeight,wallThickness,barnLength+20]);
 //bathroom1();
 // beams 16
 // upstairs ceiling height 96
 // downstairs ceiling height 108
-translate([100,-100,124])
-  rotate([0,0,90])
-  upstairs();
 
 
-translate([600,-100,124])
-  rotate([0,0,90])
-  upstairs();
+//translate([100,-100,124])
+//  rotate([0,0,90])
+//  upstairs();
+
+
+//translate([600,-100,124])
+//  rotate([0,0,90])
+//  upstairs();
   //Desk([[17+55,47,0],0,61,25.5, 25.5, 2, 3, 1]);
 module upstairs(){
   bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
@@ -50,6 +54,52 @@ module barnAndWindows(){
     bin(barn);
     allWindows();
   }
+}
+
+
+module briaormanorKitchen(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 176.5;
+  length = 472;
+
+//      doorToPatio = [[-84,0.5,0],270,[6,70,78.5]];
+// 176 x 472 home living and kit
+  translate(position)
+    rotate([0,0,angle]){
+//      difference(){ 
+//      room([[-89-143.75,181.5,0],270,[width,length,wallH],5,[104,wallH],235-104]);
+//      box(doorToPatio);
+//      }
+
+      //doorToPatio = [[-80,0.5,0],270,[6,70,78.5]];
+//      doorToPatio = [[-84,0.5,0],270,[6,70,78.5]];
+//      box(doorToPatio);
+      room([[-89-143.75,181.5,0],270,[width,length,wallH],5,[104,wallH],235-104]);
+
+
+      counterCup([[0,0,0],55,0,36]);
+      SinkDouble([[0,0,0],0,42,2]);
+      counterCup([[-30-42,0,],55,0,30]);
+      counterCorner([[-84,0,0],270]);
+      counterCup([[-84,44+12,0],55,270,44]);
+      stove([[-84,56,0],270]);
+      cupboard([[-72,56,0 + 60],90,30]);
+      counterCup([[-84,120,0],55,270,34]);
+      refrigerator([[-25,141.5,0],0,[36,35,70]]);
+      counterCup([[-84 + 150 -34 + 13,176.5,0],55,180,34]);
+      island([[1-19,75+35,0],270,[50,36,37]]);
+      Table([[17+55,47,0],0,42, 94, 5, 4, 36, 1]);
+
+    //  Table([[170,0,0],0,18, 20, 3, 1.5, 23.5, 1]);
+    //  Couch([[300,20,0],0,95]);
+    //  Couch([[370,30,0],20,37]);
+    //  Table([[270,0,0],0,18, 20, 3, 1.5, 23.5, 1]);
+
+
+
+    }
 }
 
 module allFurniture(){
@@ -410,7 +460,8 @@ module kitchenOne(in){
   translate(position){
     rotate([0,0,a]){
        counterCup([[0,0,wallThickness],55,0,36]);
-       sink([[0,0,wallThickness],0,42]);
+
+       SinkDouble([[0,0,wallThickness],0,42,2]);
        counterCup([[-42-30,0,wallThickness],55,0,30]);
        counterCup([[-42-30-44,0,wallThickness],55,0,44]);
        stove([[-42-30-44,0,wallThickness],0]);
@@ -422,6 +473,8 @@ module kitchenOne(in){
        brairmanorIsland = [[-155,27+40,wallThickness],0,[50,36,37]];
        island(kimsIsland);
        Table([[27,26+54,0],90,42, 94, 5, 4, 36, 1]);
+        Couch([[-150,233,0],180,95]);
+        Couch([[-250,233,0],180,37]);
 
     }
   }
@@ -464,7 +517,7 @@ translate([t+p,-w/2,bh])
 //window([[120,160,wallThickness],[3,3,3]]);
 //translate([-40,0,0])bin(e);
 //bin(f);
-
+//Barn length 83', width 50', garage length 39', 
 wallThickness = 6;
 barnLength = 1000;
 barnWidth = 600;

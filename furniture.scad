@@ -119,6 +119,9 @@ module Couch(in){
   }
 }
 
+
+
+//position, angle, topWidth, topDepth, topThickness, legWidth, legHeight, legOffset
 module Table(in){
   position = in[0];           
   angle = in[1];
