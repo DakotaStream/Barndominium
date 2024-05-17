@@ -8,9 +8,8 @@ SecondFloorWallHeight = 96;
 FirstFloorWallHeight = 96;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
-//briarmanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
-//briarmanorHall([[132,-65,0],90,FirstFloorWallHeight]);
 downstairs();
+//upstairs();
 //kitchen([[5,  bin(barn);53,0,0],270]);
 //barnAndWindows();
 //allGables();
@@ -33,7 +32,7 @@ downstairs();
 
 
 module downstairs(){
-//  briarmanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
+  briarmanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
   briarmanorHall([[132,-65,0],90,FirstFloorWallHeight]);
 
 
@@ -79,22 +78,21 @@ module briarmanorHall(in){
   doorWall = [[267-4.5,176.5+5,0],0,[5,37,wallH],[30,81],3.75];
   bathWall = [[267.5,176.5+37+5,0],90,[5,158+5,wallH],[30,81],29.5+5];
   stairsWall = [[99.5+5,176.5+37+5,0],0,[5,108,wallH]];
+  insideStairsWall = [[99.5+5+42,176.5+37+5,0],0,[5,230,wallH]];
   
 
   wall(livingWall);
   wallAndDoor(doorWall);
   wall(stairsWall);
-  doorToPatio = [[-84 + 143.5,0.5,0],270,[6,30,81]];
- // difference(){ 
+  wall(insideStairsWall);
+  doorToBasement = [[267.5-5-117,176.0+37+5,0],90,[6,30,81]];
+  difference(){ 
     wallAndDoor(bathWall);
-    box(doorToPatio);
- // }
+    box(doorToBasement);
+    }
+  room([[121.5,378.5,0],0,[width,length,wallH],5,[60,81],0]);
 
-
-        room([[-89,481.5,0],0,[width,length,wallH],5,[60,81],0]);
-
-
-}
+  }
 }
 
 
