@@ -8,8 +8,9 @@ SecondFloorWallHeight = 96;
 FirstFloorWallHeight = 96;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
-briaormanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
-
+//briarmanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
+//briarmanorHall([[132,-65,0],90,FirstFloorWallHeight]);
+downstairs();
 //kitchen([[5,  bin(barn);53,0,0],270]);
 //barnAndWindows();
 //allGables();
@@ -29,6 +30,14 @@ briaormanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
 //  rotate([0,0,90])
 //  upstairs();
   //Desk([[17+55,47,0],0,61,25.5, 25.5, 2, 3, 1]);
+
+
+module downstairs(){
+//  briarmanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
+  briarmanorHall([[132,-65,0],90,FirstFloorWallHeight]);
+
+
+}
 module upstairs(){
   bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
   bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
@@ -55,30 +64,57 @@ module barnAndWindows(){
     allWindows();
   }
 }
+module briarmanorHall(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 20;
+  length = 60;
+
+  translate(position)
+    rotate([0,0,angle]){
 
 
-module briaormanorKitchen(in){
+  livingWall = [[267.5,176.5,0],90,[5,116.5,wallH]];
+  doorWall = [[267-4.5,176.5+5,0],0,[5,37,wallH],[30,81],3.75];
+  bathWall = [[267.5,176.5+37+5,0],90,[5,158+5,wallH],[30,81],29.5+5];
+  stairsWall = [[99.5+5,176.5+37+5,0],0,[5,108,wallH]];
+  
+
+  wall(livingWall);
+  wallAndDoor(doorWall);
+  wall(stairsWall);
+  doorToPatio = [[-84 + 143.5,0.5,0],270,[6,30,81]];
+ // difference(){ 
+    wallAndDoor(bathWall);
+    box(doorToPatio);
+ // }
+
+
+        room([[-89,481.5,0],0,[width,length,wallH],5,[60,81],0]);
+
+
+}
+}
+
+
+
+
+module briarmanorKitchen(in){
   position = in[0];           
   angle = in[1];
   wallH = in[2];
   width = 176.5;
   length = 472;
 
-//      doorToPatio = [[-84,0.5,0],270,[6,70,78.5]];
-// 176 x 472 home living and kit
   translate(position)
     rotate([0,0,angle]){
-//      difference(){ 
-//      room([[-89-143.75,181.5,0],270,[width,length,wallH],5,[104,wallH],235-104]);
-//      box(doorToPatio);
-//      }
 
-      //doorToPatio = [[-80,0.5,0],270,[6,70,78.5]];
-//      doorToPatio = [[-84,0.5,0],270,[6,70,78.5]];
-//      box(doorToPatio);
-      room([[-89-143.75,181.5,0],270,[width,length,wallH],5,[104,wallH],235-104]);
-
-
+      doorToPatio = [[-84 + 143.5,0.5,0],270,[6,70,78.5]];
+      difference(){ 
+        room([[-89,181.5,0],270,[width,length,wallH],5,[104,wallH],235-104]);
+        box(doorToPatio);
+      }
       counterCup([[0,0,0],55,0,36]);
       SinkDouble([[0,0,0],0,42,2]);
       counterCup([[-30-42,0,],55,0,30]);
@@ -91,12 +127,13 @@ module briaormanorKitchen(in){
       counterCup([[-84 + 150 -34 + 13,176.5,0],55,180,34]);
       island([[1-19,75+35,0],270,[50,36,37]]);
       Table([[17+55,47,0],0,42, 94, 5, 4, 36, 1]);
-
-    //  Table([[170,0,0],0,18, 20, 3, 1.5, 23.5, 1]);
-    //  Couch([[300,20,0],0,95]);
-    //  Couch([[370,30,0],20,37]);
-    //  Table([[270,0,0],0,18, 20, 3, 1.5, 23.5, 1]);
-
+      Table([[129.5 + 48,20,0],0,18, 20, 3, 1.5, 19, 1]);
+      Couch([[291,17,0],0,95]);
+      Table([[129.5 + 48 + 95 + 20,20,0],0,18, 20, 3, 1.5, 19, 1]);
+      Couch([[360,30,0],20,37]);
+      flatScreen = [[227.5 + 77,width -4,32],90,[3.5,76.5,44]];
+      color("gray")
+          box(flatScreen);
 
 
     }
