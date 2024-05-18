@@ -72,12 +72,16 @@ module briarmanorLaundry(in){
   width = 24;
   length = 50;
 
-  livingWall = [[388,181.5,0],0,[5,83.5,wallH]];
+  washerWall = [[388,181.5,0],0,[5,83.5+9.25,wallH]];
+  voidWall = [[388,265.5,0],90,[8.75,44,wallH]];
+  garageDoorWall = [[388,265.5+3.75,0],90,[5,86.5,wallH],[32,81],50.5];
   
   translate(position)
     rotate([0,0,angle]){
-    room([[301.5-8.5,278.5,0],180,[width,length,wallH],5,[30,81],10]);
-    wall(livingWall);
+    room([[310-8.5,278.5,0],180,[width,length,wallH],5,[30,81],10]);
+    wall(washerWall);
+    wall(voidWall);
+    wallAndDoor(garageDoorWall);
   }
 
 }
