@@ -4,11 +4,15 @@
 
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
-SecondFloorWallHeight = 96;
+BasementWallHeight = 92.5;
 FirstFloorWallHeight = 108;
+GarageWallHeight = 124;
+SecondFloorWallHeight = 96;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
-downstairs();
+brairmanorHouse();
+
+//downstairs();
 //upstairs();
 //kitchen([[5,  bin(barn);53,0,0],270]);
 //barnAndWindows();
@@ -30,16 +34,34 @@ downstairs();
 //  upstairs();
   //Desk([[17+55,47,0],0,61,25.5, 25.5, 2, 3, 1]);
 
-
-module downstairs(){
-//  briarmanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
-//  briarmanorHall([[132,-65,0],90,FirstFloorWallHeight]);
-//  briarmanorLaundry([[132,-65,0],90,FirstFloorWallHeight]);
-//  briarmanorGarage([[-383,81.5,0],0,FirstFloorWallHeight]);
-//  bathroom1([[-86.5,199.0,0],180,FirstFloorWallHeight]);
-  briarmanorBasement([[-383,81.5,0],0,FirstFloorWallHeight]);
-
+module brairmanorHouse(){
+//  upstairs();
+//  briarmanorBasement([[0,0,0],0,BasementWallHeight]);
+  downstairs([[142.5,154,0],0,BasementWallHeight]);
+ 
 }
+
+module downstairs(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 231;
+  length = 247;
+  floor1 = [[0,0,-12.5],0,[260+10+9.5,464+10+8,12.5]];
+  floor2 = [[-174,0,-12.5],0,[174,232+8.5,12.5]];
+ 
+    box(floor1);
+    box(floor2);
+  translate(position)
+    rotate([0,0,angle]){
+    briarmanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
+    briarmanorHall([[132,-65,0],90,FirstFloorWallHeight]);
+    briarmanorLaundry([[132,-65,0],90,FirstFloorWallHeight]);
+//    briarmanorGarage([[-383,81.5,0],0,FirstFloorWallHeight]);
+    bathroom1([[-86.5,199.0,0],180,FirstFloorWallHeight]);
+  }
+}
+
 module upstairs(){
   bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
   bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
@@ -74,11 +96,19 @@ module briarmanorBasement(in){
   width = 231;
   length = 247;
 
-  
+  floor1 = [[0,0,-1],0,[260+10,464+10,1]];
+  floor2 = [[-180-5,0,-1],0,[180+10,232+10,1]];
+ 
   translate(position)
     rotate([0,0,angle]){
+    #box(floor1);
+    #box(floor2);
     room([[0,0,0],0,[260,464,wallH],5,[232,wallH],0]);
     room([[5,232+10,0],180,[180,232,wallH],5,[232,wallH],0]);
+
+
+
+
   }
 }
 
