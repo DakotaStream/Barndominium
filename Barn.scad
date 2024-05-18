@@ -5,7 +5,7 @@
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
 SecondFloorWallHeight = 96;
-FirstFloorWallHeight = 96;
+FirstFloorWallHeight = 108;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
 downstairs();
@@ -34,7 +34,8 @@ downstairs();
 module downstairs(){
   briarmanorKitchen([[132,-65,0],90,FirstFloorWallHeight]);
   briarmanorHall([[132,-65,0],90,FirstFloorWallHeight]);
-
+  briarmanorLaundry([[132,-65,0],90,FirstFloorWallHeight]);
+  bathroom1([[-86.5,199.0,0],180,FirstFloorWallHeight]);
 
 }
 module upstairs(){
@@ -63,6 +64,23 @@ module barnAndWindows(){
     allWindows();
   }
 }
+
+module briarmanorLaundry(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 24;
+  length = 50;
+
+  livingWall = [[388,181.5,0],0,[5,83.5,wallH]];
+  
+  translate(position)
+    rotate([0,0,angle]){
+    room([[301.5-8.5,278.5,0],180,[width,length,wallH],5,[30,81],10]);
+    wall(livingWall);
+  }
+
+}
 module briarmanorHall(in){
   position = in[0];           
   angle = in[1];
@@ -81,9 +99,9 @@ module briarmanorHall(in){
   insideStairsWall = [[99.5+5+42,176.5+37+5,0],0,[5,230,wallH]];
   frontDoorWall = [[121.5,443.5,0],90,[5,72,wallH],[36,81],2];
   kitchenAjacentWall = [[-89,181.5,0],0,[5,135,wallH]];
+  kitchenAjacentWall2 = [[35.4,181.5,0],0,[11.6,106.5,wallH],[93,89],6.5];
   officeWall = [[0.5,316.5,0],90,[5,89.5,wallH]];
   officeWall2 = [[44.5,368.5,0],0,[5,80,wallH]];
-  //officeWall3 = [[39,321.5,0],0,[5,127,wallH]];
   officeWall3 = [[-89,321.5,0],0,[5,127,wallH]];
   officeWindowWall = [[44.5,443.5,0],90,[5,89.5+39,wallH]];
 
@@ -94,6 +112,8 @@ module briarmanorHall(in){
   wall(insideStairsWall);
   wallAndDoor(frontDoorWall);
   wall(kitchenAjacentWall);
+  wallAndDoor(kitchenAjacentWall2);
+
   wall(officeWall);
   wall(officeWall2);
   wall(officeWall3);
@@ -151,20 +171,6 @@ module briarmanorKitchen(in){
     }
 }
 
-module allFurniture(){
-//  sink([[700,0,wallThickness],1,180,36]);
-//  counter([[858,0,wallThickness],1,180,200]);
-//  counter([[0,71,wallThickness],1,90,50]);
-//  counter([[-21,0,wallThickness],1,0,50]);
- // counter([[0,0,wallThickness],1,0,21]);
- // counterCorner([[0,21,wallThickness],1,90,]);
-//([position],scale,angle,[length, width, height])
- // island([[0,21,wallThickness],1,90,[60,48,37]]);
-//  counter([[0,0,wallThickness],1,90,50]);
-  //counterCorner([[0,0,wallThickness],1,180]);
-//  stove([[800,0,wallThickness],1,180]);
-}
-
 
 
 module allGables(){
@@ -174,12 +180,18 @@ module allGables(){
 }
 
 
-module bathroom1(){
- //     pos     a  inside rm  wl  door  pos 
-  floorHeight = 6;
-  room([[0,0,floorHeight],0,[42,93,108],5,[30,81],26]);
-  Toilet([[34,93+5-3,floorHeight],180]);
-  Sink([[44,5,floorHeight],0,36]);
+module bathroom1(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 43;
+  length = 93;
+  translate(position)
+    rotate([0,0,angle]){
+      room([[0,0,0],0,[width,length,wallH],5,[30,81],26]);
+      Toilet([[34,93+5-3,0],180]);
+      Sink([[44,5,0],0,36]);
+  }
 }
 
 module bathroom2(in){
