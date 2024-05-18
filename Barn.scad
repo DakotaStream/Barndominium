@@ -39,7 +39,7 @@ module brairmanorHouse(){
 //  upstairs();
 //  briarmanorBasement([[0,0,-105],0,BasementWallHeight]);
   downstairs([[133,154,0],0,FirstFloorWallHeight]);
-  briarmanorGarage([[-383,81.5,0],0,GarageWallHeight]);
+  briarmanorGarage([[-250,235,-16],0,GarageWallHeight]);
 }
 
 module downstairs(in){
@@ -121,7 +121,7 @@ module briarmanorGarage(in){
   translate(position)
     rotate([0,0,angle]){
     room([[0,0,0],0,[width,length,wallH],5,[190.5,82],21]);
-    #box(floor1);
+    box(floor1);
   }
 }
 
