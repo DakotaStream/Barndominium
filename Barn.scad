@@ -79,12 +79,18 @@ module briarmanorHall(in){
   bathWall = [[267.5,176.5+37+5,0],90,[5,158+5,wallH],[30,81],29.5+5];
   stairsWall = [[99.5+5,176.5+37+5,0],0,[5,108,wallH]];
   insideStairsWall = [[99.5+5+42,176.5+37+5,0],0,[5,230,wallH]];
+  frontDoorWall = [[121.5,443.5,0],90,[5,72,wallH],[36,81],2];
+  kitchenAjacentWall = [[-89,181.5,0],0,[5,135,wallH]];
+  officeWall = [[0.5,316.5,0],90,[5,89.5,wallH]];
+  kitchenAjacentWall = [[-89,181.5,0],0,[5,75,wallH]];
   
-
   wall(livingWall);
   wallAndDoor(doorWall);
   wall(stairsWall);
   wall(insideStairsWall);
+  wallAndDoor(frontDoorWall);
+  wall(kitchenAjacentWall);
+  wall(officeWall);
   doorToBasement = [[267.5-5-117,176.0+37+5,0],90,[6,30,81]];
   difference(){ 
     wallAndDoor(bathWall);
