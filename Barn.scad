@@ -36,10 +36,10 @@ module brairmanorHouse(){
   GarageWallHeight = 124;
   SecondFloorWallHeight = 96;
 
-//  upstairs();
 //  briarmanorBasement([[0,0,-105],0,BasementWallHeight]);
-  downstairs([[133,154,0],0,FirstFloorWallHeight]);
-  briarmanorGarage([[-250,235,-16],0,GarageWallHeight]);
+//  downstairs([[133,154,0],0,FirstFloorWallHeight]);
+//  briarmanorGarage([[-245,235.5,-16],0,GarageWallHeight]);
+  upstairs([[133,154,120.5],0,SecondFloorWallHeight]);
 }
 
 module downstairs(in){
@@ -64,17 +64,28 @@ module downstairs(in){
   }
 }
 
-module upstairs(){
-  bathroom2([[132,-65,0],90,SecondFloorWallHeight]);
-  bathroomMaster([[0,0,0],0,SecondFloorWallHeight]);
-  closetMaster([[112+5,-2,0],0,SecondFloorWallHeight]);
-  bedroomMaster([[5,113,0],180,SecondFloorWallHeight]);
-  bedroom1([[127,-156,0],0,SecondFloorWallHeight]);
-  closet1([[127,-151,0],270,SecondFloorWallHeight]);
-  bedroom2([[127,-369.5,0],0,SecondFloorWallHeight]);
-  closet2([[280,-221.5,0],90,SecondFloorWallHeight]);
-  bedroom3([[-25,-369.5,0],0,SecondFloorWallHeight]);
-  loft([[-25,-369.5,0],0,SecondFloorWallHeight]);
+module upstairs(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 231;
+  length = 247;
+  floor = [[-177,-369.5,-12.5],0,[457,464+10+8.5,12.5]];
+  
+  translate(position)
+    rotate([0,0,angle]){
+      bathroom2([[132,-65,0],90,wallH]);
+      bathroomMaster([[0,0,0],0,wallH]);
+      closetMaster([[112+6,-2,0],0,wallH]);
+      bedroomMaster([[5,113,0],180,wallH]);
+      bedroom1([[127,-156,0],0,wallH]);
+      closet1([[127,-151,0],270,wallH]);
+      bedroom2([[127,-369.5,0],0,wallH]);
+      closet2([[280,-221.5,0],90,wallH]);
+      bedroom3([[-25,-369.5,0],0,wallH]);
+      loft([[-25,-369.5,0],0,wallH]);
+      box(floor);
+    }
 }
 
 
