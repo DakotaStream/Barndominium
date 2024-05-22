@@ -4,12 +4,14 @@
 
 include <furniture.scad>;
 include <kitchenFurnishings.scad>;
+include <staircase.scad>;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
 brairmanorHouse();
 
-//downstairs();
-//upstairs();
+
+//  #box(floor1);
+
 //kitchen([[5,  bin(barn);53,0,0],270]);
 //barnAndWindows();
 //allGables();
@@ -20,10 +22,6 @@ brairmanorHouse();
 // downstairs ceiling height 108
 
 
-//translate([100,-100,124])
-//  rotate([0,0,90])
-//  upstairs();
-
 
 //translate([600,-100,124])
 //  rotate([0,0,90])
@@ -31,10 +29,10 @@ brairmanorHouse();
   //Desk([[17+55,47,0],0,61,25.5, 25.5, 2, 3, 1]);
 
 module brairmanorHouse(){
-  BasementWallHeight = 92.5;
-  FirstFloorWallHeight = 108;
-  GarageWallHeight = 124;
-  SecondFloorWallHeight = 96;
+  BasementWallHeight = 6; //92.5;
+  FirstFloorWallHeight = 6;//108;
+  GarageWallHeight = 6; //124;
+  SecondFloorWallHeight = 6;//96;
 
   briarmanorBasement([[0,0,-105],0,BasementWallHeight]);
   downstairs([[133,154,0],0,FirstFloorWallHeight]);
@@ -49,14 +47,13 @@ module downstairs(in){
   width = 231;
   length = 247;
  
-//  floor1 = [[0,0,-12.5],0,[260+10+9.5,464+10+8,12.5]];
-//  floor2 = [[-174,0,-12.5],0,[174,232+8.5,12.5]];
   floor1 = [[-142.5,-154,-12.5],0,[260+10+9.5,464+10+8,12.5]];
   floor2 = [[-316.5,-154,-12.5],0,[174,232+8.5,12.5]];
   translate(position)
     rotate([0,0,angle]){
     briarmanorKitchen([[132,-65,0],90,wallH]);
     briarmanorHall([[132,-65,0],90,wallH]);
+    briarmanorOffice([[132,-65,0],90,wallH]);
     briarmanorLaundry([[132,-65,0],90,wallH]);
     bathroom1([[-86.5,199.0,0],180,wallH]);
     #box(floor1);
@@ -169,7 +166,6 @@ module briarmanorHall(in){
   translate(position)
     rotate([0,0,angle]){
 
-
   livingWall = [[267.5,176.5,0],90,[5,116.5,wallH]];
   doorWall = [[267-4.5,176.5+5,0],0,[5,37,wallH],[30,81],3.75];
   bathWall = [[267.5,176.5+37+5,0],90,[5,158+5,wallH],[30,81],29.5+5];
@@ -178,11 +174,6 @@ module briarmanorHall(in){
   frontDoorWall = [[121.5,443.5,0],90,[5,72,wallH],[36,81],2];
   kitchenAjacentWall = [[-89,181.5,0],0,[5,135,wallH]];
   kitchenAjacentWall2 = [[35.4,181.5,0],0,[11.6,106.5,wallH],[93,89],6.5];
-  officeWall = [[0.5,316.5,0],90,[5,89.5,wallH]];
-  officeWall2 = [[44.5,368.5,0],0,[5,80,wallH]];
-  officeWall3 = [[-89,321.5,0],0,[5,127,wallH]];
-  officeWindowWall = [[44.5,443.5,0],90,[5,89.5+39,wallH]];
-
 
   wall(livingWall);
   wallAndDoor(doorWall);
@@ -192,10 +183,6 @@ module briarmanorHall(in){
   wall(kitchenAjacentWall);
   wallAndDoor(kitchenAjacentWall2);
 
-  wall(officeWall);
-  wall(officeWall2);
-  wall(officeWall3);
-  wall(officeWindowWall);
 
   doorToBasement = [[267.5-5-117,176.0+37+5,0],90,[6,30,81]];
   difference(){ 
@@ -207,6 +194,36 @@ module briarmanorHall(in){
   }
 }
 
+module briarmanorOffice(in){
+  position = in[0];           
+  angle = in[1];
+  wallH = in[2];
+  width = 20;
+  length = 60;
+
+  translate(position)
+    rotate([0,0,angle]){
+    officeWall = [[0.5,316.5,0],90,[5,89.5,wallH]];
+    officeWall2 = [[44.5,368.5,0],0,[5,80,wallH]];
+    officeWall3 = [[-89,321.5,0],0,[5,127,wallH]];
+    officeWindowWall = [[44.5,443.5,0],90,[5,89.5+39,wallH]];
+
+    printer = [[-9,420,0],0,[21,20.5,16]];
+    color("gray")
+      box(printer);
+    fileCabinet = [[43,390,0],90,33,20.5, 27.5, 0, 2.5, 3, 3, 1];
+      Thing(fileCabinet);
+  //position, angle, topW, topD, modThick, modW1, modW2 legW, legH, legOffset
+    Desk([[-55+44,321.5+36,0],90,67,29, 25.5, 18, 18, 2, 3, 1]);
+
+    wall(officeWall);
+    wall(officeWall2);
+    wall(officeWall3);
+    wall(officeWindowWall);
+
+
+  }
+}
 
 
 
@@ -364,8 +381,6 @@ module bedroom1(in){
       difference(){ 
         room([[0,0,0],0,[width,length,wallH],5,[30,81],3.5]);
         wall([[5+36,5.5,0],270,[6,30,81]]);
-
-
       }
       BedTwin([[110,152,0],180]);
 
