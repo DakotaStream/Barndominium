@@ -238,6 +238,120 @@ module box(in){
 
 
 
+
+module stairs(in){
+  position = in[0];           
+  angle = in[1];
+  step = in[2];
+
+  $fn=numberOfFaces;
+  rise = step[0];
+  depth = step[1];
+  steps = step[2];
+  width = step[3];
+
+  translate(position)
+    rotate([90,0,angle]){
+    linear_extrude(height=width)
+    for(i=[0:1:steps-1]){
+      hull(){
+        translate([i*depth,i*rise])
+          circle(1);
+        translate([i*depth,(i+1)*rise])
+          circle(1);
+        }
+      hull(){
+        translate([i*depth,(i+1)*rise])
+          circle(1);
+        translate([(i+1)*depth,(i+1)*rise])
+          circle(1);
+        }
+    }
+  }
+}
+
+
+module stairsN(in){
+  position = in[0];           
+  angle = in[1];
+  step = in[2];
+
+  $fn=numberOfFaces;
+  rise = step[0];
+  depth = step[1];
+  steps = step[2];
+  width = step[3];
+
+  translate(position)
+    rotate([90,0,angle]){
+    linear_extrude(height=width)
+    for(i=[0:1:steps-1]){
+    echo (i ,"i=","(",i*depth,i*rise,")" ,"(",(i+1)*depth,i*rise,")","(",(i+1)*depth,(i+1)*rise,")");
+      hull(){
+        translate([i*depth,i*rise])
+          circle(1);
+        translate([(i+1)*depth,i*rise])
+          circle(1);
+        }
+      hull(){
+        translate([(i+1)*depth,i*rise])
+          circle(1);
+        translate([(i+1)*depth,(i+1)*rise])
+          circle(1);
+}
+    }
+
+  }
+}
+
+
+module stairsold(in){
+  position = in[0];           
+  angle = in[1];
+  step = in[2];
+
+  $fn=numberOfFaces;
+  rise = step[0];
+  rise2 = step[0] *2;
+  steps = step[1];
+  wid = step[2];
+
+
+
+
+  translate(position)
+    rotate([90,45,0]){
+    linear_extrude(height=wid)
+
+    for(i=[0:2:(steps*2)-1]){
+      hull(){
+        translate([i*rise,0])
+          circle(1);
+
+        translate([(i+1)*rise,rise])
+          circle(1);
+        }
+      hull(){   
+        translate([(i+1)*rise,rise])
+          circle(1);
+        
+        translate([(i+2)*rise,0])
+          circle(1);
+         }
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
 //radius = 20;
 //angles = [45, 135];
 //fn = 24;

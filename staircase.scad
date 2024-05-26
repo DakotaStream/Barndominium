@@ -2,7 +2,7 @@
 //Written by Madam Mim 2016 
 //All dimensions in mm unless otherwise stated. Inches are used in ECHO returns for a sanity check of tread and riser sizes to make sure that humans can actually climb it! 
 
-scaleratio=1; //scale ratio. 2mmFS=152 Full size=1
+scaleratio=1025.4; //scale ratio. 2mmFS=152 Full size=1
 //scaleratio=152; //scale ratio. 2mmFS=152 Full size=1
 
 casewidth=15; //overall staircase width
