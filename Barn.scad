@@ -33,15 +33,15 @@ brairmanorHouse();
   //Desk([[17+55,47,0],0,61,25.5, 25.5, 2, 3, 1]);
 
 module brairmanorHouse(){
-  BasementWallHeight = 6; //92.5;
+  BasementWallHeight = 92.5;
   FirstFloorWallHeight = 6;//108;
   GarageWallHeight = 6; //124;
   SecondFloorWallHeight = 6;//96;
 
-//  briarmanorBasement([[0,0,-105],0,BasementWallHeight]);
-  downstairs([[133,154,0],0,FirstFloorWallHeight]);
+  briarmanorBasement([[0,0,-105],0,BasementWallHeight]);
+//  downstairs([[133,154,0],0,FirstFloorWallHeight]);
 //  briarmanorGarage([[-245,235.5,-16],0,GarageWallHeight]);
-  //upstairs([[-10,369.5,120.5],0,SecondFloorWallHeight]);
+//  upstairs([[-10,369.5,120.5],0,SecondFloorWallHeight]);
 }
 
 module downstairs(in){
@@ -57,11 +57,11 @@ module downstairs(in){
     rotate([0,0,angle]){
     briarmanorKitchen([[132,-65,0],90,wallH]);
     briarmanorHall([[132,-65,0],90,wallH]);
-//    briarmanorOffice([[132,-65,0],90,wallH]);
-//    briarmanorLaundry([[132,-65,0],90,wallH]);
-//    bathroom1([[-86.5,199.0,0],180,wallH]);
-//    #box(floor1);
-//    #box(floor2);
+    briarmanorOffice([[132,-65,0],90,wallH]);
+    briarmanorLaundry([[132,-65,0],90,wallH]);
+    bathroom1([[-86.5,199.0,0],180,wallH]);
+    #box(floor1);
+    #box(floor2);
   }
 }
 
@@ -116,6 +116,8 @@ module briarmanorBasement(in){
  
   translate(position)
     rotate([0,0,angle]){
+    stairs([[-140,238,0],0,[7.5,10.75,14,37.5]]);
+
     #box(floor1);
     #box(floor2);
     room([[0,0,0],0,[260,464,wallH],5,[232,wallH],0]);
@@ -187,10 +189,11 @@ module briarmanorHall(in){
   wall(kitchenAjacentWall);
   wallAndDoor(kitchenAjacentWall2);
 
-  stairs([[0,0,0],0,[7.5,10.75,14,39]]);
+  stairs([[146.5,341,8],270,[7.5,10.75,14,39]]);
 
-  firstStep = [[0,0,-12.5],0,[37.5,40,12.5]];
-    #box(firstStep);
+  //firstStep = [[0,0,-12.5],0,[37.5,40,12.5]];
+  firstStep = [[104.5,341,-12.5+8],0,[42,37.5,12.5]];
+    box(firstStep);
  
   doorToBasement = [[267.5-5-117,176.0+37+5,0],90,[6,30,81]];
   difference(){ 
