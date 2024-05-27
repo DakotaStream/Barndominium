@@ -283,7 +283,7 @@ module shelving(in){
     rotate([90,0,angle]){
     for(i=[0:1:len(shelvesOnSlots)-1]){
       echo("i=",i,"s=",shelvesOnSlots[i]*3);
-      box([[0,shelvesOnSlots[i]*3,0],0,[size[0],2.75,24]]); 
+      box([[0,shelvesOnSlots[i]*3-3,0],0,[size[0],2.75,24]]); 
     }
 
   color("gray"){
