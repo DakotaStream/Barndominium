@@ -235,7 +235,13 @@ module box(in){
       cube(wall); 
 }
 
-
+module cylindr(in){
+  position = in[0];           
+  size = in[1];
+  f=50;
+  translate(position)
+    cylinder(h=size[1],r=size[0],$fn=f);
+}
 
 
 

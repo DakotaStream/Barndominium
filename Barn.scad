@@ -38,7 +38,7 @@ module brairmanorHouse(){
 
   briarmanorBasement([[0,0,-105],0,BasementWallHeight]);
 //  downstairs([[133,154,0],0,FirstFloorWallHeight]);
-//  briarmanorGarage([[-245,235.5,-16],0,GarageWallHeight]);
+  briarmanorGarage([[-245,235.5,-16],0,GarageWallHeight]);
 //  upstairs([[-10,369.5,120.5],0,SecondFloorWallHeight]);
 }
 
@@ -111,13 +111,13 @@ module briarmanorBasement(in){
 
   floor1 = [[0,0,-1],0,[260+10,464+10,1]];
   floor2 = [[-180-5,0,-1],0,[180+10,232+10,1]];
-  furnace = [[5+46.5,440,-1],0,[35,29,72]];
+  furnace = [[5+46.5,440-132,-1],0,[35,29,72]];
+  hotwaterHeater = [[18.5+18,455.5-136,-1],[13.25,60]];
  
   translate(position)
     rotate([0,0,angle]){
     stairs([[-179+97,238,0],0,[7.5,10.75,14,37.5]]);
 
-   // shelving([[-180+29,32,0],0,[102,96],[6,12,18,24],[1,2,0,2,2]]);
     shelving([[-180+1,160.25-9.5,0],90,[76.75,72],[6,12,24],[0,0,0,0,0]]);
     shelving([[-180+1,51.5,0],90,[102,72],[6,12,18,24],[2,0,0,0,1]]);
     
@@ -125,10 +125,10 @@ module briarmanorBasement(in){
     shelving([[-52.0,32,0],0,[102,72],[6,12,18,24],[2,1,1,1,1]]);
     shelving([[47.5,32,0],0,[102,72],[6,12,18,24],[2,1,1,1,1]]);
 
-
     shelving([[240,5+120.5,0],90,[102,96],[7,13,23],[1,1,0,1]]);
     shelving([[240,5+120.5+102,0],90,[102,96],[13,25],[0,0,1]]);
 
+    cylindr(hotwaterHeater);
     box(furnace);
     #box(floor1);
     #box(floor2);
@@ -147,7 +147,10 @@ module briarmanorGarage(in){
   
   translate(position)
     rotate([0,0,angle]){
-    room([[0,0,0],0,[width,length,wallH],5,[190.5,82],21]);
+
+
+  shelving([[236-46.25,228-1,0],180,[102,96],[13,25,32],[0,0,2,2]]);
+  room([[0,0,0],0,[width,length,wallH],5,[190.5,82],21]);
     box(floor1);
   }
 }
