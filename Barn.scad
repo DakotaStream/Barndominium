@@ -6,9 +6,9 @@ include <furniture.scad>;
 include <kitchenFurnishings.scad>;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
-brairmanorHouse();
+//brairmanorHouse();
 //basment
-//      stairs([[0,0,0],0,[7.5,10.75,14,37.5]]);
+shelving([[0,0,0],0,[102,96],[6,12,18,24]]);
 
 //down stairs
 //      stairs([[0,0,0],0,[7.5,10.75,14,39]]);

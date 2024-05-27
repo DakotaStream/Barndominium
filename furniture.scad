@@ -272,6 +272,26 @@ module stairs(in){
 
 
 
+module shelving(in){
+  position = in[0];           
+  angle = in[1];
+  size = in[2];
+  shelvesOnSlots = in[3];
+  steps = 5;
+  numElements = len(position);
+  translate(position)
+    rotate([90,0,angle]){
+    for(i=[0:1:len(shelvesOnSlots)-1]){
+      echo("i=",i,"s=",shelvesOnSlots[i]*3);
+      box([[0,shelvesOnSlots[i]*3,0],0,[size[0],2.75,24]]); 
+    }
+  box([[0,0,0],0,[2.5,size[1],1.5]]); 
+  box([[0,0,24],0,[2.5,size[1],1.5]]); 
+  box([[size[0]-2.5,0,0],0,[2.5,size[1],1.5]]); 
+  box([[size[0]-2.5,0,24],0,[2.5,size[1],1.5]]); 
+  }
+}
+
 
 
 
