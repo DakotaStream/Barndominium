@@ -6,9 +6,7 @@ include <furniture.scad>;
 include <kitchenFurnishings.scad>;
 //([position],scale,angle,[length, width, height])
 //kitchenOne([[553,0,0],180]);
-//brairmanorHouse();
-//basment
-shelving([[0,0,0],0,[102,96],[6,12,18,24]]);
+brairmanorHouse();
 
 //down stairs
 //      stairs([[0,0,0],0,[7.5,10.75,14,39]]);
@@ -39,9 +37,9 @@ module brairmanorHouse(){
   SecondFloorWallHeight = 6;//96;
 
   briarmanorBasement([[0,0,-105],0,BasementWallHeight]);
-  downstairs([[133,154,0],0,FirstFloorWallHeight]);
-  briarmanorGarage([[-245,235.5,-16],0,GarageWallHeight]);
-  upstairs([[-10,369.5,120.5],0,SecondFloorWallHeight]);
+//  downstairs([[133,154,0],0,FirstFloorWallHeight]);
+//  briarmanorGarage([[-245,235.5,-16],0,GarageWallHeight]);
+//  upstairs([[-10,369.5,120.5],0,SecondFloorWallHeight]);
 }
 
 module downstairs(in){
@@ -117,6 +115,17 @@ module briarmanorBasement(in){
   translate(position)
     rotate([0,0,angle]){
     stairs([[-179+97,238,0],0,[7.5,10.75,14,37.5]]);
+
+   // shelving([[-180+29,32,0],0,[102,96],[6,12,18,24],[1,2,0,2,2]]);
+    shelving([[-180+1,160.25-9.5,0],90,[76.75,72],[6,12,24],[0,0,0,0,0]]);
+    shelving([[-180+1,51.5,0],90,[102,72],[6,12,18,24],[1,2,0,2,2]]);
+    
+    shelving([[-180+29,32,0],0,[102,72],[6,12,18,24],[1,2,0,2,2]]);
+    shelving([[-52.0,32,0],0,[102,72],[6,12,18,24],[1,2,0,2,2]]);
+    shelving([[47.5,32,0],0,[102,72],[6,12,18,24],[1,2,0,2,2]]);
+
+
+    shelving([[-180+29,32,0],0,[102,96],[6,12,18,24],[1,2,0,2,2]]);
 
     #box(floor1);
     #box(floor2);

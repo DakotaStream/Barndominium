@@ -277,7 +277,7 @@ module shelving(in){
   angle = in[1];
   size = in[2];
   shelvesOnSlots = in[3];
-  steps = 5;
+  rowOfBoxes = in[4];
   numElements = len(position);
   translate(position)
     rotate([90,0,angle]){
@@ -285,11 +285,37 @@ module shelving(in){
       echo("i=",i,"s=",shelvesOnSlots[i]*3);
       box([[0,shelvesOnSlots[i]*3,0],0,[size[0],2.75,24]]); 
     }
+
+  color("gray"){
+    for(i=[0:1:len(rowOfBoxes)-1]){
+      if(rowOfBoxes[i]==1){
+        for(j=[0:1:6]){
+          if(i==0){
+            box([[(j*13.7)+4,0,2],0,[12,12.75,17]]); 
+            }
+          else{
+            box([[(j*13.7)+4,shelvesOnSlots[i-1]*3,2],0,[12,12.75,17]]); 
+            }
+          }
+        }
+      if(rowOfBoxes[i]==2){
+        for(j=[0:1:5]){
+          if(i==0){
+            box([[(j*16)+3.5,0,2],0,[15.25,12.75,21.5]]); 
+            }
+          else{
+            box([[(j*16)+3.5,shelvesOnSlots[i-1]*3,2],0,[15.25,12.75,21.5]]); 
+            }
+          }
+        }
+  } 
+   }
   box([[0,0,0],0,[2.5,size[1],1.5]]); 
-  box([[0,0,24],0,[2.5,size[1],1.5]]); 
+  box([[0,0,22.5],0,[2.5,size[1],1.5]]); 
   box([[size[0]-2.5,0,0],0,[2.5,size[1],1.5]]); 
-  box([[size[0]-2.5,0,24],0,[2.5,size[1],1.5]]); 
+  box([[size[0]-2.5,0,22.5],0,[2.5,size[1],1.5]]); 
   }
+  
 }
 
 
